@@ -17,7 +17,6 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 
-
 /**
  * Application Controller
  *
@@ -44,6 +43,18 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+
+        $this->loadComponent('Auth', [
+            'loginRedirect' => [
+                'controller' => 'Sessions',
+                'action' => 'index'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Classes',
+                'action' => 'index',
+                'home'
+            ]
+        ]);
 
 
         $this->loadComponent('Crud.Crud', [
@@ -78,5 +89,10 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(['index', 'view']);
     }
 }
