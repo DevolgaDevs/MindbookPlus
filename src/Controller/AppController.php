@@ -45,6 +45,7 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
         'unauthorizedRedirect' => $this->referer(),
+        'loginRedirect' => array('controller' => 'users', 'action' => 'add'),
         ]);
         $this->Auth->allow(['index','logout']);
     

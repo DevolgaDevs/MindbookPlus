@@ -27,8 +27,6 @@ class UsersController extends AppController
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
-                $this->Cookie->write('user.username', "john");
-                $this->set('cookieValue', $this->Cookie->read('user.username'));
                 return $this->redirect($this->Auth->redirectUrl());
             } else {
                 $this->Flash->error(__("Nom d'utilisateur ou mot de passe incorrect"), [
