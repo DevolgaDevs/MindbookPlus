@@ -22,12 +22,14 @@
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('jquery-ui.css') ?>
+    <?= $this->Html->css('material.css') ?>
+    <?= $this->Html->css('extended.css') ?>
 
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
+    <?= $this->Html->script('jquery-1.12.4.js') ?>
+    <?= $this->Html->script('jquery.min.js') ?>
+    <?= $this->Html->script('material.js') ?>
+    <?= $this->Html->script('jquery-ui.js') ?>
 </head>
 <body>
     <div id="container">
