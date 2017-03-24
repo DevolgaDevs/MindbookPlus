@@ -8,19 +8,19 @@
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $class->CLASS_ID],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $class->CLASS_ID)]
+                ['action' => 'delete', $classee->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $classee->id)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Classes'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Classees'), ['action' => 'index']) ?></li>
     </ul>
 </nav>
-<div class="classes form large-9 medium-8 columns content">
-    <?= $this->Form->create($class) ?>
+<div class="classees form large-9 medium-8 columns content">
+    <?= $this->Form->create($classee) ?>
     <fieldset>
-        <legend><?= __('Edit Class') ?></legend>
+        <legend><?= __('Edit Classee') ?></legend>
         <?php
-            echo $this->Form->control('CLASS_NAME');
+            echo $this->Form->control('name');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
