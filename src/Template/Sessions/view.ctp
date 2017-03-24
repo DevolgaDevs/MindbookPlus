@@ -16,24 +16,24 @@
     <h3><?= h($session->SESSION_ID) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('SESSION ID') ?></th>
-            <td><?= $this->Number->format($session->SESSION_ID) ?></td>
+            <th scope="row"><?= __('Id') ?></th>
+            <td><?= $this->Number->format($session->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('SESSION USER ID') ?></th>
-            <td><?= $this->Number->format($session->SESSION_USER_ID) ?></td>
+            <th scope="row"><?= __('UserId') ?></th>
+            <td><?= $this->Number->format($session->userId) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('SESSION DATE') ?></th>
-            <td><?= h($session->SESSION_DATE) ?></td>
+            <th scope="row"><?= __('Date') ?></th>
+            <td><?= h($session->date) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('SESSION HAS QUESTIONS') ?></th>
-            <td><?= $session->SESSION_HAS_QUESTIONS ? __('Yes') : __('No'); ?></td>
+            <th scope="row"><?= __('HasQuestions') ?></th>
+            <td><?= $session->hasQuestions ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
     <div class="row">
-        <h4><?= __('SESSION NAME') ?></h4>
-        <?= $this->Text->autoParagraph(h($session->SESSION_NAME)); ?>
+        <h4><?= __('Name') ?></h4>
+        <?= $this->Text->autoParagraph(h($session->name)); ?>
     </div>
 </div>

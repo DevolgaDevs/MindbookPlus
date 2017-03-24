@@ -14,20 +14,20 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('QUESTION_ANSWER_ID') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('QUESTION_ANSWER_QUESTION_ID') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('QUESTION_ANSWER_ANSWER_ID') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('QUESTION_ANSWER_IS_RIGHT_ANSWER') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('questionId') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('answerId') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('isRightAnswer') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($questionAnswers as $questionAnswer): ?>
             <tr>
-                <td><?= $this->Number->format($questionAnswer->QUESTION_ANSWER_ID) ?></td>
-                <td><?= $this->Number->format($questionAnswer->QUESTION_ANSWER_QUESTION_ID) ?></td>
-                <td><?= $this->Number->format($questionAnswer->QUESTION_ANSWER_ANSWER_ID) ?></td>
-                <td><?= h($questionAnswer->QUESTION_ANSWER_IS_RIGHT_ANSWER) ?></td>
+                <td><?= $this->Number->format($questionAnswer->id) ?></td>
+                <td><?= $this->Number->format($questionAnswer->questionId) ?></td>
+                <td><?= $this->Number->format($questionAnswer->answerId) ?></td>
+                <td><?= h($questionAnswer->isRightAnswer) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $questionAnswer->QUESTION_ANSWER_ID]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $questionAnswer->QUESTION_ANSWER_ID]) ?>

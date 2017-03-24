@@ -16,20 +16,20 @@
     <h3><?= h($questionChoice->QUESTION_CHOICE_ID) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('QUESTION CHOICE ID') ?></th>
-            <td><?= $this->Number->format($questionChoice->QUESTION_CHOICE_ID) ?></td>
+            <th scope="row"><?= __('Id') ?></th>
+            <td><?= $this->Number->format($questionChoice->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('QUESTION CHOICE QUESTION ID') ?></th>
-            <td><?= $this->Number->format($questionChoice->QUESTION_CHOICE_QUESTION_ID) ?></td>
+            <th scope="row"><?= __('QuestionId') ?></th>
+            <td><?= $this->Number->format($questionChoice->questionId) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('QUESTION CHOICE ANSWER ID') ?></th>
-            <td><?= $this->Number->format($questionChoice->QUESTION_CHOICE_ANSWER_ID) ?></td>
+            <th scope="row"><?= __('AnswerId') ?></th>
+            <td><?= $this->Number->format($questionChoice->answerId) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('QUESTION CHOICE USER ID') ?></th>
-            <td><?= $this->Number->format($questionChoice->QUESTION_CHOICE_USER_ID) ?></td>
+            <th scope="row"><?= __('UserId') ?></th>
+            <td><?= $this->Number->format($questionChoice->userId) ?></td>
         </tr>
     </table>
 </div>

@@ -16,20 +16,20 @@
     <h3><?= h($questionAnswer->QUESTION_ANSWER_ID) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('QUESTION ANSWER ID') ?></th>
-            <td><?= $this->Number->format($questionAnswer->QUESTION_ANSWER_ID) ?></td>
+            <th scope="row"><?= __('Id') ?></th>
+            <td><?= $this->Number->format($questionAnswer->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('QUESTION ANSWER QUESTION ID') ?></th>
-            <td><?= $this->Number->format($questionAnswer->QUESTION_ANSWER_QUESTION_ID) ?></td>
+            <th scope="row"><?= __('QuestionId') ?></th>
+            <td><?= $this->Number->format($questionAnswer->questionId) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('QUESTION ANSWER ANSWER ID') ?></th>
-            <td><?= $this->Number->format($questionAnswer->QUESTION_ANSWER_ANSWER_ID) ?></td>
+            <th scope="row"><?= __('AnswerId') ?></th>
+            <td><?= $this->Number->format($questionAnswer->answerId) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('QUESTION ANSWER IS RIGHT ANSWER') ?></th>
-            <td><?= $questionAnswer->QUESTION_ANSWER_IS_RIGHT_ANSWER ? __('Yes') : __('No'); ?></td>
+            <th scope="row"><?= __('IsRightAnswer') ?></th>
+            <td><?= $questionAnswer->isRightAnswer ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
 </div>

@@ -20,9 +20,10 @@
     <fieldset>
         <legend><?= __('Edit Question Choice') ?></legend>
         <?php
-            echo $this->Form->control('QUESTION_CHOICE_QUESTION_ID');
-            echo $this->Form->control('QUESTION_CHOICE_ANSWER_ID');
-            echo $this->Form->control('QUESTION_CHOICE_USER_ID');
+            echo $this->Form->control('id');
+            echo $this->Form->control('questionId');
+            echo $this->Form->control('answerId');
+            echo $this->Form->control('userId');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

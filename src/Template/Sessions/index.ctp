@@ -14,20 +14,20 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('SESSION_ID') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('SESSION_USER_ID') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('SESSION_DATE') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('SESSION_HAS_QUESTIONS') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('userId') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('date') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('hasQuestions') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($sessions as $session): ?>
             <tr>
-                <td><?= $this->Number->format($session->SESSION_ID) ?></td>
-                <td><?= $this->Number->format($session->SESSION_USER_ID) ?></td>
-                <td><?= h($session->SESSION_DATE) ?></td>
-                <td><?= h($session->SESSION_HAS_QUESTIONS) ?></td>
+                <td><?= $this->Number->format($session->id) ?></td>
+                <td><?= $this->Number->format($session->userId) ?></td>
+                <td><?= h($session->date) ?></td>
+                <td><?= h($session->hasQuestions) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $session->SESSION_ID]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $session->SESSION_ID]) ?>

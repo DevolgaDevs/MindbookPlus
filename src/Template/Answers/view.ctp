@@ -16,12 +16,12 @@
     <h3><?= h($answer->ANSWER_ID) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('ANSWER ID') ?></th>
-            <td><?= $this->Number->format($answer->ANSWER_ID) ?></td>
+            <th scope="row"><?= __('Id') ?></th>
+            <td><?= $this->Number->format($answer->id) ?></td>
         </tr>
     </table>
     <div class="row">
-        <h4><?= __('ANSWER TEXT') ?></h4>
-        <?= $this->Text->autoParagraph(h($answer->ANSWER_TEXT)); ?>
+        <h4><?= __('Text') ?></h4>
+        <?= $this->Text->autoParagraph(h($answer->text)); ?>
     </div>
 </div>

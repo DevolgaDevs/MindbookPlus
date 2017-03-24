@@ -20,13 +20,14 @@
     <fieldset>
         <legend><?= __('Edit User') ?></legend>
         <?php
-            echo $this->Form->control('USER_MAIL');
-            echo $this->Form->control('USER_FIRSTNAME');
-            echo $this->Form->control('USER_LASTNAME');
-            echo $this->Form->control('USER_PASSWORD');
-            echo $this->Form->control('USER_IS_ADMIN');
-            echo $this->Form->control('USER_IS_TEACHER');
-            echo $this->Form->control('USER_CLASS_ID');
+            echo $this->Form->control('id');
+            echo $this->Form->control('username');
+            echo $this->Form->control('firstname');
+            echo $this->Form->control('lastname');
+            echo $this->Form->control('password');
+            echo $this->Form->control('isAdmin');
+            echo $this->Form->control('isTeacher');
+            echo $this->Form->control('classId');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

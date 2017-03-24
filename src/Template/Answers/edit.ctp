@@ -20,7 +20,8 @@
     <fieldset>
         <legend><?= __('Edit Answer') ?></legend>
         <?php
-            echo $this->Form->control('ANSWER_TEXT');
+            echo $this->Form->control('id');
+            echo $this->Form->control('text');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

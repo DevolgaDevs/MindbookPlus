@@ -13,39 +13,39 @@
     </ul>
 </nav>
 <div class="users view large-9 medium-8 columns content">
-    <h3><?= h($user->USER_ID) ?></h3>
+    <h3><?= h($user->username) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('USER MAIL') ?></th>
-            <td><?= h($user->USER_MAIL) ?></td>
+            <th scope="row"><?= __('Username') ?></th>
+            <td><?= h($user->username) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('USER FIRSTNAME') ?></th>
-            <td><?= h($user->USER_FIRSTNAME) ?></td>
+            <th scope="row"><?= __('Firstname') ?></th>
+            <td><?= h($user->firstname) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('USER LASTNAME') ?></th>
-            <td><?= h($user->USER_LASTNAME) ?></td>
+            <th scope="row"><?= __('Lastname') ?></th>
+            <td><?= h($user->lastname) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('USER PASSWORD') ?></th>
-            <td><?= h($user->USER_PASSWORD) ?></td>
+            <th scope="row"><?= __('Password') ?></th>
+            <td><?= h($user->password) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('USER ID') ?></th>
-            <td><?= $this->Number->format($user->USER_ID) ?></td>
+            <th scope="row"><?= __('Id') ?></th>
+            <td><?= $this->Number->format($user->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('USER CLASS ID') ?></th>
-            <td><?= $this->Number->format($user->USER_CLASS_ID) ?></td>
+            <th scope="row"><?= __('ClassId') ?></th>
+            <td><?= $this->Number->format($user->classId) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('USER IS ADMIN') ?></th>
-            <td><?= $user->USER_IS_ADMIN ? __('Yes') : __('No'); ?></td>
+            <th scope="row"><?= __('IsAdmin') ?></th>
+            <td><?= $user->isAdmin ? __('Yes') : __('No'); ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('USER IS TEACHER') ?></th>
-            <td><?= $user->USER_IS_TEACHER ? __('Yes') : __('No'); ?></td>
+            <th scope="row"><?= __('IsTeacher') ?></th>
+            <td><?= $user->isTeacher ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
 </div>

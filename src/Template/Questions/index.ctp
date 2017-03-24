@@ -14,16 +14,16 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('QUESTION_ID') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('QUESTION_OPEN_QUESTION') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('isOpenQuestion') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($questions as $question): ?>
             <tr>
-                <td><?= $this->Number->format($question->QUESTION_ID) ?></td>
-                <td><?= h($question->QUESTION_OPEN_QUESTION) ?></td>
+                <td><?= $this->Number->format($question->id) ?></td>
+                <td><?= h($question->isOpenQuestion) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $question->QUESTION_ID]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $question->QUESTION_ID]) ?>

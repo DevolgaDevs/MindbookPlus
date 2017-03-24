@@ -20,8 +20,9 @@
     <fieldset>
         <legend><?= __('Edit Question') ?></legend>
         <?php
-            echo $this->Form->control('QUESTION_TEXT');
-            echo $this->Form->control('QUESTION_OPEN_QUESTION');
+            echo $this->Form->control('id');
+            echo $this->Form->control('text');
+            echo $this->Form->control('isOpenQuestion');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

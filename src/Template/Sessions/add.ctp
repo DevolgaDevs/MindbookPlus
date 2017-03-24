@@ -14,10 +14,11 @@
     <fieldset>
         <legend><?= __('Add Session') ?></legend>
         <?php
-            echo $this->Form->control('SESSION_NAME');
-            echo $this->Form->control('SESSION_USER_ID');
-            echo $this->Form->control('SESSION_DATE', ['empty' => true]);
-            echo $this->Form->control('SESSION_HAS_QUESTIONS');
+            echo $this->Form->control('id');
+            echo $this->Form->control('name');
+            echo $this->Form->control('userId');
+            echo $this->Form->control('date', ['empty' => true]);
+            echo $this->Form->control('hasQuestions');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

@@ -14,14 +14,14 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('ANSWER_ID') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($answers as $answer): ?>
             <tr>
-                <td><?= $this->Number->format($answer->ANSWER_ID) ?></td>
+                <td><?= $this->Number->format($answer->id) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $answer->ANSWER_ID]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $answer->ANSWER_ID]) ?>

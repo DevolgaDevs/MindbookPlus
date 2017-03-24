@@ -14,28 +14,28 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('USER_ID') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('USER_MAIL') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('USER_FIRSTNAME') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('USER_LASTNAME') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('USER_PASSWORD') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('USER_IS_ADMIN') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('USER_IS_TEACHER') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('USER_CLASS_ID') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('username') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('firstname') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('lastname') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('password') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('isAdmin') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('isTeacher') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('classId') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($users as $user): ?>
             <tr>
-                <td><?= $this->Number->format($user->USER_ID) ?></td>
-                <td><?= h($user->USER_MAIL) ?></td>
-                <td><?= h($user->USER_FIRSTNAME) ?></td>
-                <td><?= h($user->USER_LASTNAME) ?></td>
-                <td><?= h($user->USER_PASSWORD) ?></td>
-                <td><?= h($user->USER_IS_ADMIN) ?></td>
-                <td><?= h($user->USER_IS_TEACHER) ?></td>
-                <td><?= $this->Number->format($user->USER_CLASS_ID) ?></td>
+                <td><?= $this->Number->format($user->id) ?></td>
+                <td><?= h($user->username) ?></td>
+                <td><?= h($user->firstname) ?></td>
+                <td><?= h($user->lastname) ?></td>
+                <td><?= h($user->password) ?></td>
+                <td><?= h($user->isAdmin) ?></td>
+                <td><?= h($user->isTeacher) ?></td>
+                <td><?= $this->Number->format($user->classId) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $user->USER_ID]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->USER_ID]) ?>

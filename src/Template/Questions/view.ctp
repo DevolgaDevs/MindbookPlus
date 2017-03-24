@@ -16,16 +16,16 @@
     <h3><?= h($question->QUESTION_ID) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('QUESTION ID') ?></th>
-            <td><?= $this->Number->format($question->QUESTION_ID) ?></td>
+            <th scope="row"><?= __('Id') ?></th>
+            <td><?= $this->Number->format($question->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('QUESTION OPEN QUESTION') ?></th>
-            <td><?= $question->QUESTION_OPEN_QUESTION ? __('Yes') : __('No'); ?></td>
+            <th scope="row"><?= __('IsOpenQuestion') ?></th>
+            <td><?= $question->isOpenQuestion ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
     <div class="row">
-        <h4><?= __('QUESTION TEXT') ?></h4>
-        <?= $this->Text->autoParagraph(h($question->QUESTION_TEXT)); ?>
+        <h4><?= __('Text') ?></h4>
+        <?= $this->Text->autoParagraph(h($question->text)); ?>
     </div>
 </div>
