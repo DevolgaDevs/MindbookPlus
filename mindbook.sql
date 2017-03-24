@@ -37,7 +37,7 @@ CREATE TABLE `answers` (
 -- Structure de la table `classes`
 --
 
-CREATE TABLE `classes` (
+CREATE TABLE `classees` (
   `id` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -46,7 +46,7 @@ CREATE TABLE `classes` (
 -- Contenu de la table `classes`
 --
 
-INSERT INTO `classes` (`id`, `name`) VALUES
+INSERT INTO `classees` (`id`, `name`) VALUES
 (1, 'NoClass'),
 (2, 'M2 MIAGE apprentissage');
 
@@ -138,9 +138,9 @@ ALTER TABLE `answers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `classes`
+-- Index pour la table `classees`
 --
-ALTER TABLE `classes`
+ALTER TABLE `classees`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -190,9 +190,9 @@ ALTER TABLE `users`
 ALTER TABLE `answers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `classes`
+-- AUTO_INCREMENT pour la table `classees`
 --
-ALTER TABLE `classes`
+ALTER TABLE `classees`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `questions`
@@ -248,7 +248,7 @@ ALTER TABLE `sessions`
 -- Contraintes pour la table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `USER_CLASS_ID` FOREIGN KEY (`classId`) REFERENCES `classes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `USER_CLASS_ID` FOREIGN KEY (`classId`) REFERENCES `classees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

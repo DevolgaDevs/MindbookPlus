@@ -4,12 +4,12 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Class Entity
+ * Classee Entity
  *
- * @property int $CLASS_ID
- * @property string $CLASS_NAME
+ * @property int $id
+ * @property string $name
  */
-class Class extends Entity
+class Classee extends Entity
 {
 
     /**
@@ -23,6 +23,6 @@ class Class extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'CLASS_ID' => false
+        'id' => false
     ];
 }

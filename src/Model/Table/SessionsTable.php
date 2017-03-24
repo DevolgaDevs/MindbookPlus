@@ -31,8 +31,8 @@ class SessionsTable extends Table
         parent::initialize($config);
 
         $this->setTable('sessions');
-        $this->setDisplayField('SESSION_ID');
-        $this->setPrimaryKey('SESSION_ID');
+        $this->setDisplayField('name');
+        $this->setPrimaryKey('id');
     }
 
     /**
@@ -44,23 +44,23 @@ class SessionsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('SESSION_ID')
-            ->allowEmpty('SESSION_ID', 'create');
+            ->integer('id')
+            ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('SESSION_NAME');
+            ->allowEmpty('name');
 
         $validator
-            ->integer('SESSION_USER_ID')
-            ->allowEmpty('SESSION_USER_ID');
+            ->integer('userId')
+            ->allowEmpty('userId');
 
         $validator
-            ->dateTime('SESSION_DATE')
-            ->allowEmpty('SESSION_DATE');
+            ->dateTime('date')
+            ->allowEmpty('date');
 
         $validator
-            ->boolean('SESSION_HAS_QUESTIONS')
-            ->allowEmpty('SESSION_HAS_QUESTIONS');
+            ->boolean('hasQuestions')
+            ->allowEmpty('hasQuestions');
 
         return $validator;
     }

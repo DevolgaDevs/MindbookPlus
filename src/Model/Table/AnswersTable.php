@@ -31,8 +31,8 @@ class AnswersTable extends Table
         parent::initialize($config);
 
         $this->setTable('answers');
-        $this->setDisplayField('ANSWER_ID');
-        $this->setPrimaryKey('ANSWER_ID');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
     }
 
     /**
@@ -44,12 +44,12 @@ class AnswersTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('ANSWER_ID')
-            ->allowEmpty('ANSWER_ID', 'create');
+            ->integer('id')
+            ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('ANSWER_TEXT', 'create')
-            ->notEmpty('ANSWER_TEXT');
+            ->requirePresence('text', 'create')
+            ->notEmpty('text');
 
         return $validator;
     }

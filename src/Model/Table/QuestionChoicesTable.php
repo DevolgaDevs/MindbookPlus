@@ -31,8 +31,8 @@ class QuestionChoicesTable extends Table
         parent::initialize($config);
 
         $this->setTable('question_choices');
-        $this->setDisplayField('QUESTION_CHOICE_ID');
-        $this->setPrimaryKey('QUESTION_CHOICE_ID');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
     }
 
     /**
@@ -44,20 +44,20 @@ class QuestionChoicesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('QUESTION_CHOICE_ID')
-            ->allowEmpty('QUESTION_CHOICE_ID', 'create');
+            ->integer('id')
+            ->allowEmpty('id', 'create');
 
         $validator
-            ->integer('QUESTION_CHOICE_QUESTION_ID')
-            ->allowEmpty('QUESTION_CHOICE_QUESTION_ID');
+            ->integer('questionId')
+            ->allowEmpty('questionId');
 
         $validator
-            ->integer('QUESTION_CHOICE_ANSWER_ID')
-            ->allowEmpty('QUESTION_CHOICE_ANSWER_ID');
+            ->integer('answerId')
+            ->allowEmpty('answerId');
 
         $validator
-            ->integer('QUESTION_CHOICE_USER_ID')
-            ->allowEmpty('QUESTION_CHOICE_USER_ID');
+            ->integer('userId')
+            ->allowEmpty('userId');
 
         return $validator;
     }

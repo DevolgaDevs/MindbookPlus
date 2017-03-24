@@ -31,8 +31,8 @@ class QuestionAnswersTable extends Table
         parent::initialize($config);
 
         $this->setTable('question_answers');
-        $this->setDisplayField('QUESTION_ANSWER_ID');
-        $this->setPrimaryKey('QUESTION_ANSWER_ID');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
     }
 
     /**
@@ -44,20 +44,20 @@ class QuestionAnswersTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('QUESTION_ANSWER_ID')
-            ->allowEmpty('QUESTION_ANSWER_ID', 'create');
+            ->integer('id')
+            ->allowEmpty('id', 'create');
 
         $validator
-            ->integer('QUESTION_ANSWER_QUESTION_ID')
-            ->allowEmpty('QUESTION_ANSWER_QUESTION_ID');
+            ->integer('questionId')
+            ->allowEmpty('questionId');
 
         $validator
-            ->integer('QUESTION_ANSWER_ANSWER_ID')
-            ->allowEmpty('QUESTION_ANSWER_ANSWER_ID');
+            ->integer('answerId')
+            ->allowEmpty('answerId');
 
         $validator
-            ->boolean('QUESTION_ANSWER_IS_RIGHT_ANSWER')
-            ->allowEmpty('QUESTION_ANSWER_IS_RIGHT_ANSWER');
+            ->boolean('isRightAnswer')
+            ->allowEmpty('isRightAnswer');
 
         return $validator;
     }

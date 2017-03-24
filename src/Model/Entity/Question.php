@@ -6,9 +6,9 @@ use Cake\ORM\Entity;
 /**
  * Question Entity
  *
- * @property int $QUESTION_ID
- * @property string $QUESTION_TEXT
- * @property bool $QUESTION_OPEN_QUESTION
+ * @property int $id
+ * @property string $text
+ * @property bool $isOpenQuestion
  */
 class Question extends Entity
 {
@@ -24,6 +24,6 @@ class Question extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'QUESTION_ID' => false
+        'id' => false
     ];
 }

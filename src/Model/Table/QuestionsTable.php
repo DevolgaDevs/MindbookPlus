@@ -31,8 +31,8 @@ class QuestionsTable extends Table
         parent::initialize($config);
 
         $this->setTable('questions');
-        $this->setDisplayField('QUESTION_ID');
-        $this->setPrimaryKey('QUESTION_ID');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
     }
 
     /**
@@ -44,15 +44,15 @@ class QuestionsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('QUESTION_ID')
-            ->allowEmpty('QUESTION_ID', 'create');
+            ->integer('id')
+            ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('QUESTION_TEXT');
+            ->allowEmpty('text');
 
         $validator
-            ->boolean('QUESTION_OPEN_QUESTION')
-            ->allowEmpty('QUESTION_OPEN_QUESTION');
+            ->boolean('isOpenQuestion')
+            ->allowEmpty('isOpenQuestion');
 
         return $validator;
     }

@@ -6,11 +6,11 @@ use Cake\ORM\Entity;
 /**
  * Session Entity
  *
- * @property int $SESSION_ID
- * @property string $SESSION_NAME
- * @property int $SESSION_USER_ID
- * @property \Cake\I18n\Time $SESSION_DATE
- * @property bool $SESSION_HAS_QUESTIONS
+ * @property int $id
+ * @property string $name
+ * @property int $userId
+ * @property \Cake\I18n\Time $date
+ * @property bool $hasQuestions
  */
 class Session extends Entity
 {
@@ -26,6 +26,6 @@ class Session extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'SESSION_ID' => false
+        'id' => false
     ];
 }

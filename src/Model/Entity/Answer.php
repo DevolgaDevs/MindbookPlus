@@ -6,8 +6,8 @@ use Cake\ORM\Entity;
 /**
  * Answer Entity
  *
- * @property int $ANSWER_ID
- * @property string $ANSWER_TEXT
+ * @property int $id
+ * @property string $text
  */
 class Answer extends Entity
 {
@@ -23,6 +23,6 @@ class Answer extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'ANSWER_ID' => false
+        'id' => false
     ];
 }

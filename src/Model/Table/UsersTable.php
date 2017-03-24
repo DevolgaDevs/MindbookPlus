@@ -44,33 +44,47 @@ class UsersTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('USER_ID')
-            ->NotEmpty('USER_ID', 'create');
+            ->integer('id')
+            ->allowEmpty('id', 'create');
 
         $validator
-            ->NotEmpty('username');
+            ->allowEmpty('username');
 
         $validator
-            ->NotEmpty('USER_FIRSTNAME');
+            ->allowEmpty('firstname');
 
         $validator
-            ->NotEmpty('USER_LASTNAME');
+            ->allowEmpty('lastname');
 
         $validator
-            ->NotEmpty('password');
+            ->allowEmpty('password');
 
         $validator
-            ->boolean('USER_IS_ADMIN')
-            ->allowEmpty('USER_IS_ADMIN');
+            ->boolean('isAdmin')
+            ->allowEmpty('isAdmin');
 
         $validator
-            ->boolean('USER_IS_TEACHER')
-            ->allowEmpty('USER_IS_TEACHER');
+            ->boolean('isTeacher')
+            ->allowEmpty('isTeacher');
 
         $validator
-            ->integer('USER_CLASS_ID')
-            ->allowEmpty('USER_CLASS_ID');
+            ->integer('classId')
+            ->allowEmpty('classId');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->isUnique(['username']));
+
+        return $rules;
     }
 }

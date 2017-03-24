@@ -6,10 +6,10 @@ use Cake\ORM\Entity;
 /**
  * QuestionAnswer Entity
  *
- * @property int $QUESTION_ANSWER_ID
- * @property int $QUESTION_ANSWER_QUESTION_ID
- * @property int $QUESTION_ANSWER_ANSWER_ID
- * @property bool $QUESTION_ANSWER_IS_RIGHT_ANSWER
+ * @property int $id
+ * @property int $questionId
+ * @property int $answerId
+ * @property bool $isRightAnswer
  */
 class QuestionAnswer extends Entity
 {
@@ -25,6 +25,6 @@ class QuestionAnswer extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'QUESTION_ANSWER_ID' => false
+        'id' => false
     ];
 }

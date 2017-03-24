@@ -17,17 +17,17 @@ class SessionsFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'SESSION_ID' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'SESSION_NAME' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null],
-        'SESSION_USER_ID' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'SESSION_DATE' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'SESSION_HAS_QUESTIONS' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
+        'name' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null],
+        'userId' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'date' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'hasQuestions' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
-            'SESSION_USER_ID_idx' => ['type' => 'index', 'columns' => ['SESSION_USER_ID'], 'length' => []],
+            'SESSION_USER_ID_idx' => ['type' => 'index', 'columns' => ['userId'], 'length' => []],
         ],
         '_constraints' => [
-            'primary' => ['type' => 'primary', 'columns' => ['SESSION_ID'], 'length' => []],
-            'SESSION_USER_ID' => ['type' => 'foreign', 'columns' => ['SESSION_USER_ID'], 'references' => ['users', 'USER_ID'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
+            'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
+            'SESSION_USER_ID' => ['type' => 'foreign', 'columns' => ['userId'], 'references' => ['users', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -43,11 +43,11 @@ class SessionsFixture extends TestFixture
      */
     public $records = [
         [
-            'SESSION_ID' => 1,
-            'SESSION_NAME' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-            'SESSION_USER_ID' => 1,
-            'SESSION_DATE' => '2017-03-24 18:08:39',
-            'SESSION_HAS_QUESTIONS' => 1
+            'id' => 1,
+            'name' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+            'userId' => 1,
+            'date' => '2017-03-24 20:25:19',
+            'hasQuestions' => 1
         ],
     ];
 }
