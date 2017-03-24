@@ -43,7 +43,11 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-
+        $this->loadComponent('Auth', [
+        'unauthorizedRedirect' => $this->referer(),
+        ]);
+        $this->Auth->allow(['index','logout']);
+    
         $this->loadComponent('Crud.Crud', [
             'actions' => [
                 'Crud.Index',
@@ -77,5 +81,10 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(['view']);
     }
 }

@@ -87,4 +87,11 @@ class UsersTable extends Table
 
         return $rules;
     }
+
+    protected function _setPassword($password)
+    {
+        if (strlen($password) > 0) {
+            return (new DefaultPasswordHasher)->hash($password);
+        }
+    }
 }

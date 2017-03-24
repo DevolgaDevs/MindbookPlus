@@ -11,6 +11,45 @@ use App\Controller\AppController;
 class UsersController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
+    public function logout()
+    {
+        $this->redirect($this->Auth->logout());
+    }
+
+    public function login()
+    {
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+                $this->Cookie->write('user.username', "john");
+                $this->set('cookieValue', $this->Cookie->read('user.username'));
+                return $this->redirect($this->Auth->redirectUrl());
+            } else {
+                $this->Flash->error(__("Nom d'utilisateur ou mot de passe incorrect"), [
+                'key' => 'auth'
+                ]);
+            }
+        }
+    }
+
+    public function register()
+    {
+        $user = $this->Users->newEntity($this->request->getData());
+        if ($this->Users->save($user)) {
+            $this->Auth->setUser($user->toArray());
+            return $this->redirect([
+            'controller' => 'Users',
+            'action' => 'home'
+            ]);
+        }
+    }
+
     /**
      * Index method
      *
