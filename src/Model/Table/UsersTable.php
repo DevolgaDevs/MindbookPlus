@@ -31,7 +31,7 @@ class UsersTable extends Table
         parent::initialize($config);
 
         $this->setTable('users');
-        $this->setDisplayField('USER_ID');
+        $this->setDisplayField('USER_MAIL');
         $this->setPrimaryKey('USER_ID');
     }
 
@@ -45,10 +45,10 @@ class UsersTable extends Table
     {
         $validator
             ->integer('USER_ID')
-            ->allowEmpty('USER_ID', 'create');
+            ->NotEmpty('USER_ID', 'create');
 
         $validator
-            ->allowEmpty('USER_MAIL');
+            ->NotEmpty('USER_MAIL');
 
         $validator
             ->NotEmpty('USER_FIRSTNAME');
