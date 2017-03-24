@@ -8,10 +8,10 @@ use Cake\Auth\DefaultPasswordHasher;
  * User Entity
  *
  * @property int $USER_ID
- * @property string $USER_MAIL
+ * @property string $username
  * @property string $USER_FIRSTNAME
  * @property string $USER_LASTNAME
- * @property string $USER_PASSWORD
+ * @property string $password
  * @property bool $USER_IS_ADMIN
  * @property bool $USER_IS_TEACHER
  * @property int $USER_CLASS_ID
@@ -33,7 +33,7 @@ class User extends Entity
         'USER_ID' => false
     ];
 
-    protected function _setUSER_PASSWORD($password)
+    protected function _setpassword($password)
     {
         return (new DefaultPasswordHasher)->hash($password);
     }

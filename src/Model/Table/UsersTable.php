@@ -31,7 +31,7 @@ class UsersTable extends Table
         parent::initialize($config);
 
         $this->setTable('users');
-        $this->setDisplayField('USER_MAIL');
+        $this->setDisplayField('username');
         $this->setPrimaryKey('USER_ID');
     }
 
@@ -48,7 +48,7 @@ class UsersTable extends Table
             ->NotEmpty('USER_ID', 'create');
 
         $validator
-            ->NotEmpty('USER_MAIL');
+            ->NotEmpty('username');
 
         $validator
             ->NotEmpty('USER_FIRSTNAME');
@@ -57,7 +57,7 @@ class UsersTable extends Table
             ->NotEmpty('USER_LASTNAME');
 
         $validator
-            ->NotEmpty('USER_PASSWORD');
+            ->NotEmpty('password');
 
         $validator
             ->boolean('USER_IS_ADMIN')
