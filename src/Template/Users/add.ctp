@@ -52,19 +52,26 @@
                                     echo '<br />';
                                     echo $this->Form->control('password', array('class' => 'mdl-textfield__input'));
                                     echo '<br />';
+                                    echo $this->Form->control('classId', array('class' => 'mdl-textfield__input'));
+                                    echo '<br />';
                                     echo '<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isAdmin">';
-                                    echo 'isAdmin : <input type="checkbox" id="isAdmin" class="mdl-switch__input">';
-                                    echo '<span class="mdl-switch__label"></span>';
+                                    echo '<input type="checkbox" id="isAdmin" class="mdl-switch__input">';
+                                    echo '<span class="mdl-switch__label">Autoriser l\'administration</span>';
                                     echo '</label>';
                                     echo '<br />';
-                                    echo $this->Form->control('isTeacher', array('class' => 'mdl-checkbox__input'));
+                                    echo '<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isTeacher">';
+                                    echo '<input type="checkbox" id="isTeacher" class="mdl-switch__input">';
+                                    echo '<span class="mdl-switch__label">Définir en tant que professeur</span>';
+                                    echo '</label>';
                                     echo '<br />';
-                                    echo $this->Form->control('classId', array('class' => 'mdl-textfield__input'));
                                 ?>
                             </fieldset>
                             
                             <span style="padding :30px;">
-                                <?= $this->Form->button(__('Submit'), array('class' => 'mdl-button')) ?>
+                                <button class="mdl-button" 
+                                type="submit" name="submit" style="width : 200px" 
+                                data-upgraded=",MaterialButton">Valider
+                                </button>
                                 <?= $this->Form->end() ?>
                             </span>
                         </div>
