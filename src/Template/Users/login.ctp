@@ -46,7 +46,7 @@
         </div>
 
         <div class="overbox">
-            <a href="register.html"><div class="material-button alt-2"><span class="shape"></span></div></a>
+            <a href="/users/register"><div class="material-button alt-2"><span class="shape"></span></div></a>
         </div>
 
     </div>

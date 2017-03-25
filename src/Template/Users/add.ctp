@@ -28,7 +28,7 @@
                     echo '<input type="checkbox" id="isAdmin" class="mdl-switch__input">';
                     echo '<span class="mdl-switch__label">Autoriser l\'administration</span>';
                     echo '</label>';
-                    echo '<br />';
+                    echo '<br /><br />';
                     echo '<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isTeacher">';
                     echo '<input type="checkbox" id="isTeacher" class="mdl-switch__input">';
                     echo '<span class="mdl-switch__label">Définir en tant que professeur</span>';
