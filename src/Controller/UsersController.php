@@ -15,7 +15,7 @@ class UsersController extends AppController
     {
         parent::beforeFilter($event);
 
-        $this->set('class', $this->Users->Classees->find('list', array('fields' =>array('id','name'))));
+        $this->set('classees', $this->Users->Classees->find('list', array('fields' =>array('id','name'))));
     }
     
     public function initialize()
