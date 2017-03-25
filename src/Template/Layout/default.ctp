@@ -43,7 +43,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <header id="topnav" class="mdl-layout__header">
             <div class="mdl-layout__header-row topnav">
                 <div class="mdl-button-custom-top-profile mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect user-round-img-topbar " id="btn-menu-profile"></div>
-                <div class="profile-top-name">Gabe NEWELL</div>
+                <div class="profile-top-name"><?= $this->request->session()->read('Auth.User.username') ?></div>
                 <div class="mdl-layout-spacer"></div>
 
                 <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon" style="background-color : #353942;color:white;">

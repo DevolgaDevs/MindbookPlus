@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Users Controller
@@ -10,7 +11,15 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
-
+    function beforeRender(Event $event)
+    {
+        parent::beforeRender($event);
+                //$huhuhu = $this->request->session()->read('Auth.User.username');
+        $this->set('huhuhu', $this->request->session()->read('Auth.User.username'));
+        $this->request->session()->write('Auth.User.toto', 'tot');
+        $this->set('huhuhuhu', $this->request->session()->read('Auth.User.toto'));
+    }
+    
     public function initialize()
     {
         parent::initialize();
@@ -18,6 +27,7 @@ class UsersController extends AppController
 
     public function logout()
     {
+        $this->request->session()->destroy();
         $this->redirect($this->Auth->logout());
     }
 
@@ -92,6 +102,9 @@ class UsersController extends AppController
      */
     public function add()
     {
+        $session = $this->request->session();
+        $username =  $this->request->session()->read('User.username');
+
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
