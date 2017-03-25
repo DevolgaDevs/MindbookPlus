@@ -3,13 +3,13 @@
   * @var \App\View\AppView $this
   */
 ?>
-
+                <?php if (!empty($nextSession)) : ?> 
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                         <div class="demo-card-event mdl-card mdl-shadow--2dp">
                             <div class="mdl-card__title mdl-card--expand blue-card-color">
                                 <h4>
-                                    Architecture SI<br> 24 mai 2017<br> 8h30 - 11h30
+                                    <?= h($nextSession['name']) ?><br> <?= h($nextSession['date']) ?>
                                 </h4>
                                 <div class="last-note-header live-color"> LIVE</div>
                             </div>
@@ -23,6 +23,7 @@
                         </div>
                     </div>
                 </div>
+                <?php endif; ?>
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
                         <div class="mdl-card session-list-card mdl-shadow--2dp" style="overflow-y : auto; height : 450px;">

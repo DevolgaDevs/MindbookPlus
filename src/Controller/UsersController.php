@@ -11,9 +11,9 @@ use Cake\Event\Event;
  */
 class UsersController extends AppController
 {
-    function beforeRender(Event $event)
+    function beforeFilter(Event $event)
     {
-        parent::beforeRender($event);
+        parent::beforeFilter($event);
                 //$huhuhu = $this->request->session()->read('Auth.User.username');
         $this->set('huhuhu', $this->request->session()->read('Auth.User.username'));
         $this->request->session()->write('Auth.User.toto', 'tot');

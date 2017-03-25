@@ -2,6 +2,10 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Datasource\ConnectionManager;
+use Cake\Event\Event;
+use Cake\I18n\Time;
+use Cake\Database\Type;
 
 /**
  * Sessions Controller
@@ -10,6 +14,33 @@ use App\Controller\AppController;
  */
 class SessionsController extends AppController
 {
+
+    function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+
+        $this->getNextSession();
+        //$huhuhu = $this->request->session()->read('Auth.User.username');
+        //$this->set('huhuhu', $this->request->session()->read('Auth.User.username'));
+        //$this->request->session()->write('Auth.User.toto', 'tot');
+        //$this->set('huhuhuhu', $this->request->session()->read('Auth.User.toto'));
+    }
+
+    private function getNextSession()
+    {
+        $connection = ConnectionManager::get('default');
+        $nowTime = Time::now();
+        $nowTime->addHours(1); //UTC+1
+        $nowTimeMinus3 = Time::now();
+        $nowTimeMinus3->addHours(1); //UTC+1
+        $nowTimeMinus3->subHours(3);
+        if ($this->request->session()->read('Auth.User.isTeacher')) {
+            $result = $connection->execute('select * from sessions where userId = :userId  && date < :date && date > :dateMinus limit 1', ['userId' => $this->request->session()->read('Auth.User.id'), 'date' => Time::now(), 'dateMinus' => $nowTimeMinus3->i18nFormat('yyyy-MM-dd HH:mm:ss')]);
+        } else {
+            $result = $connection->execute('select * from sessions where classId = :classId && date < :date && date > :dateMinus limit 1', ['classId' => $this->request->session()->read('Auth.User.classId'), 'date' => $nowTime->i18nFormat('yyyy-MM-dd HH:mm:ss'), 'dateMinus' => $nowTimeMinus3->i18nFormat('yyyy-MM-dd HH:mm:ss')]);
+        }
+        $this->set('nextSession', $result->fetch('assoc'));
+    }
 
     /**
      * Index method
