@@ -34,6 +34,7 @@
                                     <tr>
                                         <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('id') ?></th>
                                         <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('userId') ?></th>
+                                        <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('classId') ?></th>
                                         <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('name') ?></th>
                                         <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('date') ?></th>
                                         <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('hasQuestions') ?></th>
@@ -41,10 +42,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($sessions as $session): ?>
+                                    <?php foreach ($sessions as $session) : ?>
                                     <tr>
                                         <td class="mdl-data-table__cell--non-numeric"><?= $this->Number->format($session->id) ?></td>
                                         <td class="mdl-data-table__cell--non-numeric"><?= h($session->userId) ?></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><?= h($session->classId) ?></td>
                                         <td class="mdl-data-table__cell--non-numeric"><?= h($session->name) ?></td>
                                         <td class="mdl-data-table__cell--non-numeric"><?= h($session->date) ?></td>
                                         <td class="mdl-data-table__cell--non-numeric"><?= h($session->hasQuestions) ?></td>

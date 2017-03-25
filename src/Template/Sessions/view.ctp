@@ -23,6 +23,10 @@
             <th scope="row"><?= __('UserId') ?></th>
             <td><?= $this->Number->format($session->userId) ?></td>
         </tr>
+                <tr>
+            <th scope="row"><?= __('classId') ?></th>
+            <td><?= $this->Number->format($session->classId) ?></td>
+        </tr>
         <tr>
             <th scope="row"><?= __('Date') ?></th>
             <td><?= h($session->date) ?></td>

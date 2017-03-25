@@ -18,6 +18,8 @@
                                     echo '<br />';
                                     echo $this->Form->control('userId', array('class' => 'mdl-textfield__input'));
                                     echo '<br />';
+                                    echo $this->Form->control('classId', array('class' => 'mdl-textfield__input'));
+                                    echo '<br />';
                                     echo $this->Form->control('date', ['empty' => false], array('class' => 'mdl-textfield__input'));
                                     echo '<br />';
                                     echo '<br />';

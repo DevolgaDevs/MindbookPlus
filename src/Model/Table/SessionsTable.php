@@ -55,6 +55,10 @@ class SessionsTable extends Table
             ->allowEmpty('userId');
 
         $validator
+            ->integer('classId')
+            ->allowEmpty('classId');
+
+        $validator
             ->dateTime('date')
             ->allowEmpty('date');
 

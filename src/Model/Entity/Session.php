@@ -9,6 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $name
  * @property int $userId
+  * @property int $classId
  * @property \Cake\I18n\Time $date
  * @property bool $hasQuestions
  */
