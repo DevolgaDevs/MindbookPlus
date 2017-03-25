@@ -47,8 +47,7 @@ class AppController extends Controller
         'unauthorizedRedirect' => $this->referer(),
         'loginRedirect' => array('controller' => 'users', 'action' => 'add'),
         ]);
-        $this->Auth->allow(['index','logout']);
-    
+        $this->Auth->allow('register');
         $this->loadComponent('Crud.Crud', [
             'actions' => [
                 'Crud.Index',
@@ -82,10 +81,5 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
-    }
-
-    public function beforeFilter(Event $event)
-    {
-        $this->Auth->allow(['view']);
     }
 }
