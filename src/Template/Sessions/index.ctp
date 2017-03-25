@@ -4,14 +4,32 @@
   */
 ?>
 
-
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                        <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title mdl-card--expand blue-card-color">
+                                <h4>
+                                    Architecture SI<br> 24 mai 2017<br> 8h30 - 11h30
+                                </h4>
+                                <div class="last-note-header live-color"> LIVE</div>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border blue-card-color">
+                                <a class="button-link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="view_session.html">
+                                    Rejoindre la session
+                                </a>
+                                <div class="mdl-layout-spacer "></div>
+                                <i class="material-icons">cast_connected</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
-                        <div class="mdl-card session-list-card mdl-shadow--2dp" style="overflow-y : auto; height : 550px;">
+                        <div class="mdl-card session-list-card mdl-shadow--2dp" style="overflow-y : auto; height : 450px;">
                             <div class="mdl-card__actions mdl-card--border">
                                 <h4 class="profil-list-titre">Liste des sessions</h4>
                             </div>
-                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp extended-table">
+                            <table class="mdl-data-table mdl-js-data-table extended-table">
                                 <thead>
                                     <tr>
                                         <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('id') ?></th>
@@ -45,7 +63,7 @@
                 </div>
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
-                        <div class="mdl-card session-list-card mdl-shadow--2dp" style="overflow-y : auto; height : 55px; margin-top:-20px">
+                        <div class="mdl-card session-list-card mdl-shadow--2dp" style="overflow-y : auto; height : 55px; margin-top:-31px">
                             <div class="mdl-card__actions mdl-card--border">
                                 <div class="paginator" style="text-align:center">
                                     <?= $this->Paginator->first('<< ' . __('Début')) ?>

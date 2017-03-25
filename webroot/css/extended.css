@@ -495,3 +495,9 @@ a {
     font-size: 20px;
     height: 50px;
 }
+
+.ui-dialog .ui-resizable-se {
+    right:0 !important;
+    bottom:0 !important;
+    background-position: 16px 16px !important;
+}

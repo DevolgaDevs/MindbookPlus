@@ -106,4 +106,21 @@ class SessionsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    /**
+     * Live method
+     *
+     * @param string|null $id Session id.
+     * @return \Cake\Network\Response|null
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function live($id = null)
+    {
+        $session = $this->Sessions->get($id, [
+            'contain' => []
+        ]);
+
+        $this->set('session', $session);
+        $this->set('_serialize', ['session']);
+    }
 }
