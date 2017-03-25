@@ -3,6 +3,14 @@
   * @var \App\View\AppView $this
   */
 ?>
+
+<script>
+    document.getElementById("topnav").remove();
+    document.getElementById("sidebar").remove();
+    document.getElementById("layout").setAttribute("class", "mdl-layout mdl-js-layout mdl-layout--fixed-header");
+    document.getElementById("content").setAttribute("class", "");
+</script>
+
 <head><?= $this->Html->css('style_login.css') ?><?= $this->Html->script('script.js') ?></head>
 
 <div class="mdl-layout-title logotext" style="margin-left : 30px;color:white;">min<span class="logotext-color">db</span>ook</div>

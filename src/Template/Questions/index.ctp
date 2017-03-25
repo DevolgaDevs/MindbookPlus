@@ -3,17 +3,7 @@
   * @var \App\View\AppView $this
   */
 ?>
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
-                    mdl-layout--fixed-header">
-        <!--INSERT TOPNAV-->
-        <!--INSERT SIDEBAR-->
-        <main class="mdl-layout__content">
-            <div class="page-content">
+
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
                         <div class="mdl-card session-list-card " style="overflow-y : auto; height : 550px;">
@@ -63,6 +53,4 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-    </div>
+          
