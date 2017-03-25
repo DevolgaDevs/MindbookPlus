@@ -33,6 +33,8 @@ class ClasseesTable extends Table
         $this->setTable('classees');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
+
+        $this->hasMany('classees');
     }
 
     /**

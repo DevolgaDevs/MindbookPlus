@@ -31,7 +31,7 @@ class AnswersTable extends Table
         parent::initialize($config);
 
         $this->setTable('answers');
-        $this->setDisplayField('id');
+        $this->setDisplayField('text');
         $this->setPrimaryKey('id');
     }
 

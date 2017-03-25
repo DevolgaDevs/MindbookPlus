@@ -33,6 +33,10 @@ class QuestionChoicesTable extends Table
         $this->setTable('question_choices');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->hasOne('questions');
+        $this->hasOne('answers');
+        $this->hasOne('users');
     }
 
     /**

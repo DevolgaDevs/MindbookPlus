@@ -33,6 +33,9 @@ class QuestionAnswersTable extends Table
         $this->setTable('question_answers');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->hasOne('qustions');
+        $this->hasOne('answers');
     }
 
     /**

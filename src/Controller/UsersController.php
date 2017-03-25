@@ -14,7 +14,8 @@ class UsersController extends AppController
     function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-                //$huhuhu = $this->request->session()->read('Auth.User.username');
+
+        $this->set('class', $this->Users->Classees->find('list', array('fields' =>array('id','name'))));
     }
     
     public function initialize()
@@ -100,7 +101,6 @@ class UsersController extends AppController
     public function add()
     {
         $session = $this->request->session();
-        $username =  $this->request->session()->read('User.username');
 
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
