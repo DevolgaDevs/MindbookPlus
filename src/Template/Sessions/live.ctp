@@ -18,14 +18,14 @@
     </script>
 
 <div class="mdl-grid">
-    <div style="background-color:white;" class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable">
-        <div class="video-prof-card mdl-card mdl-shadow--2dp ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 1000;" >
-            <!--<video src="https://storage.googleapis.com/material-design/publish/material_v_10/assets/0B14F_FSUCc01SWc0N29QR3pZT2s/MaterialMotionHero_Spec_0505.mp4" controls /> -->
+    <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable">
+        <div class="video-prof-card mdl-card mdl-shadow--2dp ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se " >
+            <video src="https://storage.googleapis.com/material-design/publish/material_v_10/assets/0B14F_FSUCc01SWc0N29QR3pZT2s/MaterialMotionHero_Spec_0505.mp4" controls /> 
         </div>
     </div>
-    <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable">
-        <div class="video-prof-card mdl-card mdl-shadow--2dp">
-            <!--<video src="https://storage.googleapis.com/material-design/publish/material_v_10/assets/0B14F_FSUCc01SWc0N29QR3pZT2s/MaterialMotionHero_Spec_0505.mp4" controls /> -->
+    <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable">
+        <div class="video-prof-card mdl-card mdl-shadow--2dp ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ">
+            <video src="https://storage.googleapis.com/material-design/publish/material_v_10/assets/0B14F_FSUCc01SWc0N29QR3pZT2s/MaterialMotionHero_Spec_0505.mp4" controls />
         </div>
     </div>
 </div>
