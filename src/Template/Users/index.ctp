@@ -56,13 +56,13 @@
                                 <tbody>
                                     <?php foreach ($users as $user): ?>
                                     <tr>
-                                        <td><?= $this->Number->format($user->id) ?></td>
-                                        <td><?= h($user->username) ?></td>
-                                        <td><?= h($user->firstname) ?></td>
-                                        <td><?= h($user->lastname) ?></td>
-                                        <td><?= h($user->isAdmin) ?></td>
-                                        <td><?= h($user->isTeacher) ?></td>
-                                        <td><?= $this->Number->format($user->classId) ?></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><?= $this->Number->format($user->id) ?></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><?= h($user->username) ?></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><?= h($user->firstname) ?></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><?= h($user->lastname) ?></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><?= h($user->isAdmin) ?></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><?= h($user->isTeacher) ?></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><?= $this->Number->format($user->classId) ?></td>
                                         <td class="actions" style="text-align:right;">
                                             <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>

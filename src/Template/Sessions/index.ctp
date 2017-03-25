@@ -46,6 +46,7 @@
                                     <tr>
                                         <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('id') ?></th>
                                         <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('userId') ?></th>
+                                        <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('name') ?></th>
                                         <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('date') ?></th>
                                         <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('hasQuestions') ?></th>
                                         <th class="mdl-data-table__cell--non-numeric actions" style="text-align:right;"><?= __('Actions') ?></th>
@@ -54,10 +55,11 @@
                                 <tbody>
                                     <?php foreach ($sessions as $session): ?>
                                     <tr>
-                                        <td><?= $this->Number->format($session->id) ?></td>
-                                        <td><?= h($session->userId) ?></td>
-                                        <td><?= h($session->date) ?></td>
-                                        <td><?= h($session->hasQuestions) ?></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><?= $this->Number->format($session->id) ?></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><?= h($session->userId) ?></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><?= h($session->name) ?></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><?= h($session->date) ?></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><?= h($session->hasQuestions) ?></td>
                                         <td class="actions" style="text-align:right;">
                                             <?= $this->Html->link(__('View'), ['action' => 'view', $session->id]) ?>
                                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $session->id]) ?>
