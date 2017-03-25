@@ -29,12 +29,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('jquery-ui.css') ?>
     <?= $this->Html->css('extended.css') ?>
     <?= $this->Html->css('material.css') ?>
-    
+    <?= $this->Html->css('mdl-selectfield.css') ?>
 
     <?= $this->Html->script('jquery-1.12.4.js') ?>
     <?= $this->Html->script('jquery.min.js') ?>
     <?= $this->Html->script('material.js') ?>
     <?= $this->Html->script('jquery-ui.js') ?>
+    <?= $this->Html->script('mdl-selectfiel.js') ?>
 </head>
 <body>
     <div id="layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer

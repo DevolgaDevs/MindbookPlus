@@ -27,7 +27,7 @@
                     echo $this->Form->control('firstname', array('class' => 'mdl-textfield__input'));
                     echo $this->Form->control('lastname', array('class' => 'mdl-textfield__input'));
                     echo $this->Form->control('password', array('class' => 'mdl-textfield__input'));
-                    echo $this->Form->control('classId', array('class' => 'mdl-textfield__input'));
+                    echo $this->Form->control('classId', array('type'=>'select','options'=>$classees, 'class' => 'mdl-selectfield__select'));
                     echo '<button class="mdl-button" type="reset" style="width : 100%; top: 30px;">Réinitialiser</button>';
                 ?>
             </fieldset>

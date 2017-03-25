@@ -22,7 +22,7 @@
                     echo '<br />';
                     echo $this->Form->control('password', array('class' => 'mdl-textfield__input'));
                     echo '<br />';
-                    echo $this->Form->control('classId', array('class' => 'mdl-textfield__input'));
+                    echo $this->Form->control('classId', array('type'=>'select','options'=>$classees, 'class' => 'mdl-selectfield__select'));
                     echo '<br />';
                     echo '<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isAdmin">';
                     echo '<input type="checkbox" id="isAdmin" class="mdl-switch__input">';
