@@ -42,7 +42,7 @@
             <div class="page-content">
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
-                        <div class="mdl-card session-list-card mdl-shadow--2dp" style="overflow-y : auto; height : 650px;">
+                        <div class="mdl-card session-list-card " style="overflow-y : auto; height : 650px;">
                             <div class="mdl-card__actions mdl-card--border">
                                 <h4 class="profil-list-titre">Ajouter un utilisateur</h4>
                             </div>
@@ -57,10 +57,12 @@
                                     echo '<br />';
                                     echo $this->Form->control('date', ['empty' => false], array('class' => 'mdl-textfield__input'));
                                     echo '<br />';
+                                    echo '<br />';
                                     echo '<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="hasQuestions">';
                                     echo '<input type="checkbox" id="hasQuestions" class="mdl-switch__input">';
                                     echo '<span class="mdl-switch__label">Cette session contient un QCM</span>';
                                     echo '</label>';
+                                    echo '<br />';
                                     echo '<br />';
                                 ?>
                             </fieldset>
@@ -78,25 +80,3 @@
             </div>
         </main>
     </div>
-
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Sessions'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="sessions form large-9 medium-8 columns content">
-    <?= $this->Form->create($session) ?>
-    <fieldset>
-        <legend><?= __('Add Session') ?></legend>
-        <?php
-            echo $this->Form->control('id');
-            echo $this->Form->control('name');
-            echo $this->Form->control('userId');
-            echo $this->Form->control('date', ['empty' => false]);
-            echo $this->Form->control('hasQuestions');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>

@@ -61,7 +61,7 @@
                                         <td class="actions" style="text-align:right;">
                                             <?= $this->Html->link(__('View'), ['action' => 'view', $session->id]) ?>
                                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $session->id]) ?>
-                                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $session->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $session->id], ['confirm' => __('Are you sure you want to delete # {0}?', $session->id)]) ?>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>
