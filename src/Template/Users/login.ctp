@@ -27,7 +27,7 @@
                 <input type="password" name="password" id="password">
                 <span class="spin"></span>
             </div>
-
+            
             <div class="button login">
                 <?= $this->Form->button(__('Login')); ?>
                 <?= $this->Form->end() ?>
@@ -35,9 +35,6 @@
             </div>
 
             </fieldset>
-
-            <a href="" class="pass-forgot">Mot de passe oublié ?</a>
-
         </div>
 
         <div class="overbox">
