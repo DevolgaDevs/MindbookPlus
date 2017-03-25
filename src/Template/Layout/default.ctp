@@ -37,7 +37,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->script('jquery-ui.js') ?>
 </head>
 <body>
-
     <div class="container">
         <?= $this->fetch('content') ?>
     </div>
