@@ -14,7 +14,18 @@
     var isScreensharingShowed = true;
     var isQcmShowed = true;
     var isCommentShowed = true;
+
     var mode = true;
+
+    var videoleft_left = $("#videoleft").css("left");
+    var videoleft_top = $("#videoleft").css("top");
+    var videoleft_width = $(".videogauche").css("width");
+    var videoleft_height = $(".videogauche").css("height");
+
+    var videoright_left = $("#videoleft").css("left");
+    var videoright_top = $("#videoleft").css("top");
+    var videoright_width = $(".videogauche").css("width");
+    var videoright_height = $(".videogauche").css("height");
 
     function showwebcam(){
         if(isWebcamShowed == true)
@@ -119,9 +130,31 @@
         }
     }
 
-    function test(){
+    function reinit(){
         
-    }
+        var d=document.getElementById('videoleft');
+        var e=document.getElementById('videoright');
+        var h=document.getElementById('videogauche');
+        var i=document.getElementById('videodroite');
+        var f=document.getElementById('qcm');
+        var g=document.getElementById('comment');
+
+        console.log($("#videoleft").css("left"));
+        console.log($("#videoleft").css("top"));
+        console.log($("#videogauche").css("width"));
+        console.log($("#videogauche").css("height"));
+
+        d.style.left = videoleft_left;
+        d.style.top = videoleft_top;
+        h.style.width = videoleft_width;
+        h.style.height = videoleft_height;
+
+        e.style.left = videoright_left;
+        e.style.top = videoright_top;
+        i.style.width = videoright_width;
+        i.style.height = videoright_height;
+
+    }   
 
     </script>
 
@@ -142,6 +175,7 @@
     <div id="viewQcm" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="showqcm();"><i class="material-icons">format_list_bulleted</i></div>
     <div id="viewComment" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="showcomment();"><i class="material-icons">message</i></div>
     <div id="mode" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="modewindow();"><i class="material-icons">border_outer</i></div>
+    <div id="reinit" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="reinit();"><i class="material-icons">refresh</i></div>
 </span>
 
 <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
@@ -151,7 +185,7 @@
 
 <div class="mdl-grid" style="margin-top : 40px;">
     <div id="videoleft" class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ">
-        <div class="video-prof-card mdl-card mdl-shadow--2dp " >
+        <div id="videogauche" class="video-prof-card  mdl-card mdl-shadow--2dp " >
             <?php if ($this->request->session()->read('Auth.User.isTeacher')) : ?>
                 <a style="margin-top:160px; height : 80px; font-size: 25px; color:#A2A2A2;"id="setup-new-broadcast" onclick="setupNewBroadcastButtonClickHandler();" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect comment-btn-send">
                     Démarrer votre webcam
@@ -164,7 +198,7 @@
         </div>
     </div>
     <div id="videoright" class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ">
-        <div class="video-prof-card mdl-card mdl-shadow--2dp ">
+        <div id="videodroite" class="video-prof-card videodroite mdl-card mdl-shadow--2dp ">
             <div id="container" style="width:100%; height:100%;">
                 <div id="card">
                     <div id="remote" >
@@ -639,3 +673,16 @@ window.addEventListener('online', function() {
     location.reload();
 }, false);
 </script>
+
+<script>
+    videoleft_left = $("#videoleft").css("left");
+    videoleft_top = $("#videoleft").css("top");
+    videoleft_width = $("#videogauche").css("width");
+    videoleft_height = $("#videogauche").css("height");
+
+    videoright_left = $("#videoright").css("left");
+    videoright_top = $("#videoright").css("top");
+    videoright_width = $("#videodroite").css("width");
+    videoright_height = $("#videodroite").css("height");
+
+    </script>
