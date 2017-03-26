@@ -60,9 +60,9 @@
     </div>
     <div id="videoright" class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ">
         <div class="video-prof-card mdl-card mdl-shadow--2dp ">
-            <div id="container" ondblclick="enterFullScreen()">
+            <div id="container" style="width:100%; height:100%;">
                 <div id="card">
-                    <div id="remote">
+                    <div id="remote" >
                         <video id="remoteVideo" autoplay="autoplay"></video>
                     </div>
                 </div>
@@ -436,10 +436,7 @@ window.onresize = function() {
     var videoHeight = innerHeight < window.innerWidth / aspectRatio ?
         innerHeight : window.innerWidth / aspectRatio;
     containerDiv = document.getElementById('container');
-    containerDiv.style.width = videoWidth + 'px';
-    containerDiv.style.height = videoHeight + 'px';
-    containerDiv.style.left = (innerWidth - videoWidth) / 2 + 'px';
-    containerDiv.style.top = (innerHeight - videoHeight) / 2 + 'px';
+
 };
 
 function enterFullScreen() {
