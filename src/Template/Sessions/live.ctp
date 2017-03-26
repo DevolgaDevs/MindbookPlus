@@ -35,6 +35,9 @@
         <script src="/js/RTCPeerConnection-v1.5.js"> </script> 
         <script src="/js/broadcast.js"> </script>
         <script src="/js/DetectRTC.js"></script>
+        <script src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js"> </script>
+        <script src="https://cdn.webrtc-experiment.com/RTCMultiConnection/CodecsHandler.js"></script>
+        <script src="https://cdn.webrtc-experiment.com/view/websocket.js"> </script>
 
 
 <span style="position : absolute; right: 50px; top:17px;">
@@ -57,7 +60,15 @@
     </div>
     <div id="videoright" class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ">
         <div class="video-prof-card mdl-card mdl-shadow--2dp ">
-            <video src="https://storage.googleapis.com/material-design/publish/material_v_10/assets/0B14F_FSUCc01SWc0N29QR3pZT2s/MaterialMotionHero_Spec_0505.mp4" controls />
+            <div id="container" ondblclick="enterFullScreen()">
+            <div id="card">
+            <div id="remote">
+            <video id="remoteVideo" autoplay="autoplay"></video>
+        </div>
+    </div>
+
+    <div id="info-bar"></div>
+</div>
         </div>
     </div>
 </div>
@@ -207,3 +218,319 @@
                 if (setupNewBroadcast) setupNewBroadcast.onclick = setupNewBroadcastButtonClickHandler;
 
             </script>
+            <script>
+(function() {
+    var params = {},
+        r = /([^&=]+)=?([^&]*)/g;
+
+    function d(s) {
+        return decodeURIComponent(s.replace(/\+/g, ' '));
+    }
+
+    var match, search = window.location.search;
+    while (match = r.exec(search.substring(1)))
+        params[d(match[1])] = d(match[2]);
+
+    window.params = params;
+})();
+
+function setBandwidth(connection) {
+    connection.bandwidth = {};
+    connection.bandwidth.video = connection.bandwidth.screen = 512;
+    connection.bandwidth.audio = 128;
+
+    connection.processSdp = function(sdp) {
+        if (DetectRTC.isMobileDevice || DetectRTC.browser.name === 'Firefox') {
+            return sdp;
+        }
+
+        sdp = CodecsHandler.setApplicationSpecificBandwidth(sdp, connection.bandwidth, !!connection.session.screen);
+        sdp = CodecsHandler.setVideoBitrates(sdp, {
+            min: connection.bandwidth.video * 8 * 1024,
+            max: connection.bandwidth.video * 8 * 1024
+        });
+        sdp = CodecsHandler.setOpusAttributes(sdp, {
+            maxaveragebitrate: connection.bandwidth.audio * 8 * 1024,
+            maxplaybackrate: connection.bandwidth.audio * 8 * 1024,
+            stereo: 1,
+            maxptime: 3
+        });
+        sdp = CodecsHandler.preferVP9(sdp);
+        return sdp;
+    };
+}
+
+var connection = new RTCMultiConnection(params.s);
+
+connection.iceServers.push({
+    urls: 'turn:webrtcweb.com:443',
+    username: 'muazkh',
+    credential: 'muazkh'
+});
+
+connection.iceServers.push({
+    urls: 'turn:webrtcweb.com:80',
+    username: 'muazkh',
+    credential: 'muazkh'
+});
+
+setBandwidth(connection);
+
+connection.optionalArgument = {
+    optional: [{
+        DtlsSrtpKeyAgreement: true
+    }, {
+        googImprovedWifiBwe: true
+    }, {
+        googScreencastMinBitrate: 300 * 8 * 1024
+    }, {
+        googIPv6: true
+    }, {
+        googDscp: true
+    }, {
+        googCpuUnderuseThreshold: 55
+    }, {
+        googCpuOveruseThreshold: 85
+    }, {
+        googSuspendBelowMinBitrate: true
+    }, {
+        googCpuOveruseDetection: true
+    }],
+    mandatory: {}
+};
+</script>
+
+<script>
+//récupération de l'élément remoteVideo'
+var remoteVideo = document.getElementById('remoteVideo');
+var card = document.getElementById('card');
+var containerDiv;
+
+if (navigator.mozGetUserMedia) {
+    attachMediaStream = function(element, stream) {
+        console.log("Attaching media stream");
+        element.mozSrcObject = stream;
+        element.play();
+    };
+    reattachMediaStream = function(to, from) {
+        console.log("Reattaching media stream");
+        to.mozSrcObject = from.mozSrcObject;
+        to.play();
+    };
+} else if (navigator.webkitGetUserMedia) {
+    attachMediaStream = function(element, stream) {
+        if (typeof element.srcObject !== 'undefined') {
+            element.srcObject = stream;
+        } else if (typeof element.mozSrcObject !== 'undefined') {
+            element.mozSrcObject = stream;
+        } else if (typeof element.src !== 'undefined') {
+            element.src = URL.createObjectURL(stream);
+        } else {
+            console.log('Error attaching stream to element.');
+        }
+    };
+    reattachMediaStream = function(to, from) {
+        to.src = from.src;
+    };
+} else {
+    //Le navigateur ne supporte pas WEBRTC
+    console.log("Browser does not appear to be WebRTC-capable");
+}
+
+var infoBar = document.getElementById('info-bar');
+
+//gestion des réponses serveurs
+connection.onstatechange = function(state) {
+    infoBar.innerHTML = state.name + ': ' + state.reason;
+
+    if(state.name == 'request-rejected' && params.p) {
+        infoBar.innerHTML = 'Mot de passe incorrect. Veuillez vérifier la saisie.';
+    }
+
+    if(state.name === 'room-not-available') {
+        infoBar.innerHTML = 'La session est suspendue ou terminée.';
+    }
+
+    if(state.name === 'detecting-room-presence')
+    {
+        infoBar.innerHTML = 'Tentative de connexion à la session...';
+    }
+
+    if(state.name === 'connecting-with-initiator')
+    {
+        infoBar.innerHTML = 'Tentative de connexion à la session...';
+    }
+    console.log(state.name);
+    
+};
+
+//réception du document
+connection.onstreamid = function(event) {
+    infoBar.innerHTML = 'Réception du document...';
+};
+
+connection.onstream = function(e) {
+    if (e.type == 'remote') {
+        infoBar.style.display = 'none';
+        remoteStream = e.stream;
+        attachMediaStream(remoteVideo, e.stream);
+        waitForRemoteVideo();
+        remoteVideo.setAttribute('data-id', e.userid);
+
+        websocket.send('received-your-screen');
+    }
+};
+// si l'utilisateur quitte
+connection.onleave = function(e) {
+    transitionToWaiting();
+    connection.onSessionClosed();
+};
+
+//Session terminée
+connection.onSessionClosed = function() {
+    infoBar.innerHTML = 'Accès bloqué au document.';
+    infoBar.style.display = 'block';
+    connection.close();
+    websocket.onopen();
+
+    remoteVideo.pause();
+};
+
+connection.ondisconnected = connection.onSessionClosed;
+connection.onstreamended = connection.onSessionClosed;
+
+//attente de la vidéo
+function waitForRemoteVideo() {
+    var videoTracks = remoteStream.getVideoTracks();
+    if (videoTracks.length === 0 || remoteVideo.currentTime > 0) {
+        transitionToActive();
+    } else {
+        setTimeout(waitForRemoteVideo, 100);
+    }
+}
+
+function transitionToActive() {
+    remoteVideo.style.opacity = 1;
+    card.style.webkitTransform = 'rotateY(180deg)';
+    window.onresize();
+}
+
+function transitionToWaiting() {
+        card.style.webkitTransform = 'rotateY(0deg)';
+        remoteVideo.style.opacity = 0;
+    }
+window.onresize = function() {
+    var aspectRatio;
+    if (remoteVideo.style.opacity === '1') {
+        aspectRatio = remoteVideo.videoWidth / remoteVideo.videoHeight;
+    } else {
+        return;
+    }
+    var innerHeight = this.innerHeight;
+    var innerWidth = this.innerWidth;
+    var videoWidth = innerWidth < aspectRatio * window.innerHeight ?
+        innerWidth : aspectRatio * window.innerHeight;
+    var videoHeight = innerHeight < window.innerWidth / aspectRatio ?
+        innerHeight : window.innerWidth / aspectRatio;
+    containerDiv = document.getElementById('container');
+    containerDiv.style.width = videoWidth + 'px';
+    containerDiv.style.height = videoHeight + 'px';
+    containerDiv.style.left = (innerWidth - videoWidth) / 2 + 'px';
+    containerDiv.style.top = (innerHeight - videoHeight) / 2 + 'px';
+};
+
+function enterFullScreen() {
+    container.webkitRequestFullScreen();
+}
+</script>
+
+<script>
+var onMessageCallbacks = {};
+var pub = 'pub-c-3c0fc243-9892-4858-aa38-1445e58b4ecb';
+var sub = 'sub-c-d0c386c6-7263-11e2-8b02-12313f022c90';
+
+WebSocket = PUBNUB.ws;
+var websocket = new WebSocket('wss://pubsub.pubnub.com/' + pub + '/' + sub + '/' + connection.channel);
+
+websocket.onmessage = function(e) {
+    data = JSON.parse(e.data);
+
+    if (data.sender == connection.userid) return;
+
+    if (onMessageCallbacks[data.channel]) {
+        onMessageCallbacks[data.channel](data.message);
+    };
+};
+
+websocket.push = websocket.send;
+websocket.send = function(data) {
+    data.sender = connection.userid;
+    websocket.push(JSON.stringify(data));
+};
+
+connection.openSignalingChannel = function(config) {
+    var channel = config.channel || this.channel;
+    onMessageCallbacks[channel] = config.onmessage;
+
+    if (config.onopen) setTimeout(config.onopen, 1000);
+
+    return {
+        send: function(message) {
+            websocket.send({
+                sender: connection.userid,
+                channel: channel,
+                message: message
+            });
+        },
+        channel: channel
+    };
+};
+
+websocket.onerror = function() {
+    if(connection.numberOfConnectedUsers <= 0) {
+        location.reload();
+    }
+};
+
+websocket.onclose = function() {
+    if(connection.numberOfConnectedUsers <= 0) {
+        location.reload();
+    }
+};
+
+infoBar.innerHTML = 'Connexion au serveur WebSocket...';
+
+websocket.onopen = function() {
+    infoBar.innerHTML = 'Connexion établie au serveur WebSocket.';
+
+    var sessionDescription = {
+        userid: params.s,
+        extra: {},
+        session: {
+            video: true,
+            oneway: true
+        },
+        sessionid: params.s
+    };
+
+    if (params.s) {
+        infoBar.innerHTML = 'Accès à la session...';
+
+        if(params.p) {
+            //Password protected room.
+            connection.extra.password = params.p;
+        }
+
+        connection.join(sessionDescription);
+    }
+};
+
+window.addEventListener('offline', function() {
+    infoBar.innerHTML = 'Vous êtes hors-ligne.';
+}, false);
+
+window.addEventListener('online', function() {
+    infoBar.innerHTML = 'Rechargement de la page...';
+    location.reload();
+}, false);
+</script>
