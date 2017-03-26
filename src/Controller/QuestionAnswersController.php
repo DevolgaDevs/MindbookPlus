@@ -12,7 +12,7 @@ use Cake\Event\Event;
 class QuestionAnswersController extends AppController
 {
 
-        function beforeFilter(Event $event)
+    function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
 
