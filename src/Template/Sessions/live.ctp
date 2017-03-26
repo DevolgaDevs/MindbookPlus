@@ -9,7 +9,13 @@
         } );
     </script>
     <script>
-        function validateTerms(){
+
+    var isWebcamShowed = true;
+    var isScreensharingShowed = true;
+    var isQcmShowed = true;
+    var isCommentShowed = true;
+
+    function validateTerms(){
         var c=document.getElementById('isResizeMode');
         var d=document.getElementById('videoleft');
         var e=document.getElementById('videoright');
@@ -29,6 +35,67 @@
             return false;
         }
     }
+
+    function showwebcam(){
+        if(isWebcamShowed == true)
+        {
+            var d=document.getElementById('videoleft');
+            d.setAttribute("class", "hide");
+            isWebcamShowed = false;
+        }
+        else
+        {
+            var d=document.getElementById('videoleft');
+            d.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se show");
+            isWebcamShowed = true;
+        }
+    }   
+
+    function showsharing(){
+        if(isScreensharingShowed == true)
+        {
+            var d=document.getElementById('videoright');
+            d.setAttribute("class", "hide");
+            isScreensharingShowed = false;
+        }
+        else
+        {
+            var d=document.getElementById('videoright');
+            d.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se show");
+            isScreensharingShowed = true;
+        }
+    }
+
+    function showqcm(){
+        if(isQcmShowed == true)
+        {
+            var d=document.getElementById('qcm');
+            d.setAttribute("class", "hide");
+            isQcmShowed = false;
+        }
+        else
+        {
+            var d=document.getElementById('qcm');
+            d.setAttribute("class", "mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content show");
+            isQcmShowed = true;
+        }
+    }
+
+    function showcomment(){
+        if(isCommentShowed == true)
+        {
+            var d=document.getElementById('comment');
+            d.setAttribute("class", "hide");
+            isCommentShowed = false;
+        }
+        else
+        {
+            var d=document.getElementById('comment');
+            d.setAttribute("class", "mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content show");
+            isCommentShowed = true;
+        }
+    }
+
     //Stream Webcam
     </script>
         <script src="/js/firebase.js"> </script>
@@ -40,11 +107,19 @@
         <script src="https://cdn.webrtc-experiment.com/view/websocket.js"> </script>
 
 <span style="position : absolute; left: 20px; top:-8px; color:#3a3a3a"><h6><b><?= h($session->name) ?></b></h6></span>
-<span style="position : absolute; right: 50px; top:15px;">
+
+<span style="position : absolute; right: 280px; top:16px;">
     <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isResizeMode">
     <input type="checkbox" id="isResizeMode" class="mdl-switch__input" onClick="validateTerms()">
     <span class="mdl-switch__label"><b>Redimmensionner</b></span>
     </label>
+</span>
+
+<span style="position : absolute; right: 20px; top:3px;">
+    <div id="viewWebcam" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="showwebcam();" ><i class="material-icons">switch_video</i></div>
+    <div id="viewScreenSharing" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar" onclick="showsharing();"><i class="material-icons">screen_share</i></div>
+    <div id="viewQcm" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="showqcm();"><i class="material-icons">format_list_bulleted</i></div>
+    <div id="viewComment" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="showcomment();"><i class="material-icons">message</i></div>
 </span>
 
 <div class="mdl-grid" style="margin-top : 40px;">
