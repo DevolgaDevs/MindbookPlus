@@ -54,6 +54,10 @@ class QuestionsTable extends Table
             ->boolean('isOpenQuestion')
             ->allowEmpty('isOpenQuestion');
 
+        $validator
+            ->integer('sessionId')
+            ->allowEmpty('sessionId');
+
         return $validator;
     }
 }

@@ -27,6 +27,8 @@
                                     echo '<span class="mdl-switch__label">Cette question est ouverte</span>';
                                     echo '</label>';
                                     echo '<br />';
+                                    echo $this->Form->control('sessionId', array('class' => 'mdl-textfield__input'));
+                                    echo '<br />';
                                     echo '<br />';
                                 ?>
                             </fieldset>

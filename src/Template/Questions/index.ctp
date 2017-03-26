@@ -16,6 +16,7 @@
                                         <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('id') ?></th>
                                         <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('text') ?></th>
                                         <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('isOpenQuestion') ?></th>
+                                        <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('sessionId') ?></th>
                                         <th class="mdl-data-table__cell--non-numeric actions" style="text-align:right;"><?= __('Actions') ?></th>
                                     </tr>
                                 </thead>
@@ -25,6 +26,7 @@
                                         <td class="mdl-data-table__cell--non-numeric"><?= $this->Number->format($question->id) ?></td>
                                         <td class="mdl-data-table__cell--non-numeric"><?= h($question->text) ?></td>
                                         <td class="mdl-data-table__cell--non-numeric"><?= h($question->isOpenQuestion) ?></td> 
+                                        <td class="mdl-data-table__cell--non-numeric"><?= h($question->sessionId) ?></td> 
                                         <td class="actions" style="text-align:right;">
                                             <?= $this->Html->link(__('View'), ['action' => 'view', $question->id]) ?>
                                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $question->id]) ?>

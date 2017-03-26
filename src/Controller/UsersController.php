@@ -15,6 +15,8 @@ class UsersController extends AppController
     {
         parent::beforeFilter($event);
 
+                $this->Auth->allow('register');
+
         $this->set('classees', $this->Users->Classees->find('list', array('fields' =>array('id','name'))));
     }
     
@@ -53,7 +55,7 @@ class UsersController extends AppController
                 $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect([
-                'controller' => 'Users',
+                'controller' => 'Dashboard',
                 'action' => 'index'
                             ]);
             }

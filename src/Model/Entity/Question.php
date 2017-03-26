@@ -9,6 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $text
  * @property bool $isOpenQuestion
+  * @property int $sessionId
  */
 class Question extends Entity
 {
