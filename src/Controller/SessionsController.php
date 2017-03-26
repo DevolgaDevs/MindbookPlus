@@ -154,6 +154,9 @@ class SessionsController extends AppController
      */
     public function live($id = null)
     {
+        $this->set('questions', $this->Sessions->Questions->find('all')->where(['sessionId' => $id]));
+        $this->set('questionAnswers', $this->Sessions->Questions->QuestionAnswers->find('all'));
+
         $session = $this->Sessions->get($id, [
             'contain' => []
         ]);
