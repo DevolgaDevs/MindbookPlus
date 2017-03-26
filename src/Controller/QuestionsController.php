@@ -17,7 +17,6 @@ class QuestionsController extends AppController
         parent::beforeFilter($event);
 
         $this->set('sessions', $this->Questions->Sessions->find('list', array('fields' =>array('id','name'))));
-
     }
 
     /**
@@ -28,6 +27,14 @@ class QuestionsController extends AppController
     public function index()
     {
         $questions = $this->paginate($this->Questions);
+
+        $this->set(compact('questions'));
+        $this->set('_serialize', ['questions']);
+    }
+
+    public function link($id = null)
+    {
+        $questions = $this->paginate($this->Questions->find('all')->where(['sessionId' => $id]));
 
         $this->set(compact('questions'));
         $this->set('_serialize', ['questions']);

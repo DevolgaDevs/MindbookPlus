@@ -51,8 +51,13 @@ class SessionsController extends AppController
      */
     public function index()
     {
-        $sessions = $this->paginate($this->Sessions);
-
+        if ($this->request->session()->read('Auth.User.isTeacher')) {
+            $sessions = $this->paginate($this->Sessions->find('all')->where(['userId' => $this->request->session()->read('Auth.User.id')]));
+        } elseif (!$this->request->session()->read('Auth.User.isTeacher') && !$this->request->session()->read('Auth.User.isAdmin')) {
+            $sessions = $this->paginate($this->Sessions->find('all')->where(['classId' => $this->request->session()->read('Auth.User.classId')]));
+        } else {
+            $sessions = $this->paginate($this->Sessions);
+        }
         $this->set(compact('sessions'));
         $this->set('_serialize', ['sessions']);
     }
