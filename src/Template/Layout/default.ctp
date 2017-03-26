@@ -19,7 +19,7 @@ $cakeDescription = 'Mindbook';
 <html>
 <head>
     <?= $this->Html->charset() ?>
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?= $cakeDescription ?>:
@@ -30,6 +30,7 @@ $cakeDescription = 'Mindbook';
     <?= $this->Html->css('extended.css') ?>
     <?= $this->Html->css('material.css') ?>
     <?= $this->Html->css('mdl-selectfield.css') ?>
+    <?= $this->Html->css('screenserver.css') ?>
 
     <?= $this->Html->script('jquery-1.12.4.js') ?>
     <?= $this->Html->script('jquery.min.js') ?>
