@@ -19,7 +19,9 @@
                                     < Retour à la liste
                                 </a> <a href="/questions/edit/<?= $this->Number->format($question->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
                                     Editer cette session
-                                </a> </div>
+                                </a>
+                                <?= $this->Html->link('Voir les réponses associées',['controller' => 'questionAnswers','action' => 'question', $question->id], ['class' => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect', 'style' => 'background-color: #00c96f; color : #ffffff;']) ?>
+                                 </div>
                         </div>
                     </div>
                 </div>
