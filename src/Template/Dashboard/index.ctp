@@ -29,9 +29,7 @@
                             Accéder à la gestion complète de vos données personnelles.
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
-                            <a href="/users/view/1" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                                    Consulter mon profil
-                                </a>
+                            <?= $this->Html->link(__('View'), ['controller' => 'users','action' => 'view', $this->request->session()->read('Auth.User.id')]) ?>
                         </div>
                     </div>
                 </div>

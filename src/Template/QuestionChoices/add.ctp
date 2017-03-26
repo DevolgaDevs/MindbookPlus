@@ -49,9 +49,9 @@
         <legend><?= __('Add Question Choice') ?></legend>
         <?php
             echo $this->Form->control('id');
-            echo $this->Form->control('questionId');
-            echo $this->Form->control('answerId');
-            echo $this->Form->control('userId');
+            echo $this->Form->control('questionId', array('type'=>'select','options'=>$questions, 'class' => 'mdl-selectfield__select'));
+            echo $this->Form->control('answerId', array('type'=>'select','options'=>$answers, 'class' => 'mdl-selectfield__select'));
+            echo $this->Form->control('userId', array('type'=>'select','options'=>$users, 'class' => 'mdl-selectfield__select'));
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
