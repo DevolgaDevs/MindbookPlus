@@ -14,27 +14,7 @@
     var isScreensharingShowed = true;
     var isQcmShowed = true;
     var isCommentShowed = true;
-
-    function validateTerms(){
-        var c=document.getElementById('isResizeMode');
-        var d=document.getElementById('videoleft');
-        var e=document.getElementById('videoright');
-        var f=document.getElementById('qcm');
-        var g=document.getElementById('comment');
-        if (c.checked) {
-            d.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
-            e.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
-            f.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
-            g.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
-            return true;
-        } else { 
-            d.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
-            e.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
-            f.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
-            g.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
-            return false;
-        }
-    }
+    var mode = true;
 
     function showwebcam(){
         if(isWebcamShowed == true)
@@ -96,8 +76,56 @@
         }
     }
 
-    //Stream Webcam
+    function modewindow(){
+
+        var c=document.getElementById('isResizeMode');
+        var d=document.getElementById('videoleft');
+        var e=document.getElementById('videoright');
+        var f=document.getElementById('qcm');
+        var g=document.getElementById('comment');
+
+        if (mode == true) {
+
+            d.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
+            e.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
+            f.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
+            g.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
+            
+            var notification = document.querySelector('.mdl-js-snackbar');
+            notification.MaterialSnackbar.showSnackbar(
+            {
+                message: 'Mode resize'
+            }
+            );
+
+            mode = false;
+
+        } else { 
+
+            d.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
+            e.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
+            f.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
+            g.setAttribute("class", "mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ");
+            
+            var notification = document.querySelector('.mdl-js-snackbar');
+            notification.MaterialSnackbar.showSnackbar(
+            {
+                message: 'Mode draggable'
+            }
+            );
+
+            mode = true;
+
+        }
+    }
+
+    function test(){
+        
+    }
+
     </script>
+
+
         <script src="/js/firebase.js"> </script>
         <script src="/js/RTCPeerConnection-v1.5.js"> </script> 
         <script src="/js/broadcast.js"> </script>
@@ -108,19 +136,18 @@
 
 <span style="position : absolute; left: 20px; top:-8px; color:#3a3a3a"><h6><b><?= h($session->name) ?></b></h6></span>
 
-<span style="position : absolute; right: 280px; top:16px;">
-    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isResizeMode">
-    <input type="checkbox" id="isResizeMode" class="mdl-switch__input" onClick="validateTerms()">
-    <span class="mdl-switch__label"><b>Redimmensionner</b></span>
-    </label>
-</span>
-
 <span style="position : absolute; right: 20px; top:3px;">
     <div id="viewWebcam" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="showwebcam();" ><i class="material-icons">switch_video</i></div>
     <div id="viewScreenSharing" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar" onclick="showsharing();"><i class="material-icons">screen_share</i></div>
     <div id="viewQcm" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="showqcm();"><i class="material-icons">format_list_bulleted</i></div>
     <div id="viewComment" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="showcomment();"><i class="material-icons">message</i></div>
+    <div id="mode" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="modewindow();"><i class="material-icons">border_outer</i></div>
 </span>
+
+<div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
 
 <div class="mdl-grid" style="margin-top : 40px;">
     <div id="videoleft" class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ">
@@ -429,17 +456,17 @@ connection.onstatechange = function(state) {
     }
 
     if(state.name === 'room-not-available') {
-        infoBar.innerHTML = 'La session est suspendue ou terminée.';
+        infoBar.innerHTML = 'ScreenSharing non détecté.';
     }
 
     if(state.name === 'detecting-room-presence')
     {
-        infoBar.innerHTML = 'Tentative de connexion à la session...';
+        infoBar.innerHTML = 'Tentative de réception...';
     }
 
     if(state.name === 'connecting-with-initiator')
     {
-        infoBar.innerHTML = 'Tentative de connexion à la session...';
+        infoBar.innerHTML = 'Tentative de réception...';
     }
     console.log(state.name);
     
@@ -447,7 +474,7 @@ connection.onstatechange = function(state) {
 
 //réception du document
 connection.onstreamid = function(event) {
-    infoBar.innerHTML = 'Réception du document...';
+    infoBar.innerHTML = 'Réception...';
 };
 
 connection.onstream = function(e) {
