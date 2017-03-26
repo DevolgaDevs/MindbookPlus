@@ -108,6 +108,7 @@
                 }
 
                 function captureUserMedia(callback) {
+                    videosContainer = document.getElementById('videos-container');
                     var constraints = null;
                     window.option = broadcastingOption ? broadcastingOption.value : '';
                     
@@ -165,18 +166,16 @@
 <div class="mdl-grid" style="margin-top : 40px;">
     <div id="videoleft" class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ">
         <div class="video-prof-card mdl-card mdl-shadow--2dp " >
-            <section class="experiment">
-                <section>
-                    <button id="setup-new-broadcast" onclick="setupNewBroadcastButtonClickHandler();" class="setup">Diffuser en direct</button>
-                </section>
 
+                <button id="setup-new-broadcast" onclick="setupNewBroadcastButtonClickHandler();" class="setup">Diffuser en direct</button>
+               
                 <table style="width: 100%;" id="rooms-list"></table>
 
                 <div id="videos-container" style="width:100%; height:100%"></div>
             </section>
         </div>
     </div>
-    <div id="videoright"class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ">
+    <div id="videoright" class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ">
         <div class="video-prof-card mdl-card mdl-shadow--2dp ">
             <video src="https://storage.googleapis.com/material-design/publish/material_v_10/assets/0B14F_FSUCc01SWc0N29QR3pZT2s/MaterialMotionHero_Spec_0505.mp4" controls />
         </div>
