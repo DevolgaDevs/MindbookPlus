@@ -21,9 +21,9 @@
                                     < Retour à la liste
                                 </a> <a href="/sessions/edit/<?= $this->Number->format($session->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
                                     Editer cette session
-                                </a> <a href="/sessions/edit/<?= $this->Number->format($session->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
-                                    Voir les questions associées
-                                </a></div>
+                                </a>
+                                <?= $this->Html->link('Voir les questions associées',['controller' => 'questions','action' => 'session', $session->id], ['class' => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect', 'style' => 'background-color: #00c96f; color : #ffffff;']) ?>
+                                </div>
                         </div>
                     </div>
                 </div>
