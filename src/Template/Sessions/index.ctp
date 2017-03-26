@@ -54,6 +54,7 @@
                                         <td class="actions" style="text-align:right;">
                                             <?= $this->Html->link(__('View'), ['action' => 'view', $session->id]) ?>
 
+                                        <?php if ($this->request->session()->read('Auth.User.isTeacher') || $this->request->session()->read('Auth.User.isAdmin')) : ?>
                                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $session->id]) ?>
                                             <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $session->id], ['confirm' => __('Are you sure you want to delete # {0}?', $session->id)]) ?>
                                         <?php endif; ?>
