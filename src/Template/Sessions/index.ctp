@@ -26,7 +26,7 @@
                 <?php endif; ?>
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
-                        <div class="mdl-card session-list-card mdl-shadow--2dp" style="overflow-y : auto; height : 650px;">
+                        <div class="mdl-card session-list-card mdl-shadow--2dp" style="overflow-y : auto; height : 450px;">
                             <div class="mdl-card__actions mdl-card--border">
                                 <h4 class="profil-list-titre">Liste des sessions</h4>
                             </div>
