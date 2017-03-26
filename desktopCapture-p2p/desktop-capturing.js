@@ -1,4 +1,9 @@
-﻿
+﻿// Muaz Khan     - https://github.com/muaz-khan
+// MIT License   - https://www.WebRTC-Experiment.com/licence/
+// Source Code   - https://github.com/muaz-khan/Chrome-Extensions
+
+// this page is using desktopCapture API to capture and share desktop
+// http://developer.chrome.com/extensions/desktopCapture.html
 
 chrome.browserAction.onClicked.addListener(captureDesktop);
 
@@ -28,19 +33,13 @@ function captureDesktop() {
     });
 
     chrome.storage.sync.get(null, function(items) {
-        if (items['is_audio'] && items['is_audio'] === 'true' && chromeVersion >= 50) {
+        if (items['is_audio'] && items['is_audio'] === 'true') {
             isAudio = true;
+            captureTabUsingTabCapture();
+            return;
         }
 
         var sources = ['window', 'screen'];
-        if (chromeVersion >= 50) {
-            if (isAudio) {
-                sources = ['tab', 'audio'];
-            } else {
-                sources = ['tab'].concat(sources);
-            }
-        }
-
         var desktop_id = chrome.desktopCapture.chooseDesktopMedia(sources, onAccessApproved);
     });
 }
@@ -49,14 +48,14 @@ var constraints;
 var min_bandwidth = 512;
 var max_bandwidth = 1048;
 var room_password = '';
-var room_id = '338877';
+var room_id = '';
 var isAudio = false;
 
 function onAccessApproved(chromeMediaSourceId) {
     if (!chromeMediaSourceId) {
         setDefaults();
         chrome.windows.create({
-            url: "data:text/html,<h1>L'utilisateur ne peut pas partager son écran.</h1>",
+            url: "data:text/html,<h1>User denied to share his screen.</h1>",
             type: 'popup',
             width: screen.width / 2,
             height: 170
@@ -133,103 +132,118 @@ function onAccessApproved(chromeMediaSourceId) {
             }
         };
 
-        if (isAudio && chromeVersion >= 50) {
-            constraints.audio = {
-                mandatory: {
-                    chromeMediaSource: 'desktop',
-                    chromeMediaSourceId: chromeMediaSourceId,
-                },
-                optional: [{
-                    bandwidth: resolutions.maxWidth * 8 * 1024
-                }]
-            };
-        }
-
         navigator.webkitGetUserMedia(constraints, gotStream, getUserMediaError);
     });
+}
 
-    function gotStream(stream) {
-        if (!stream) {
-            setDefaults();
-            chrome.windows.create({
-                url: "data:text/html,<h1>Erreur interne lors de la capture de l'écran.</h1>",
-                type: 'popup',
-                width: screen.width / 2,
-                height: 170
-            });
-            return;
-        }
-
-        chrome.browserAction.setTitle({
-            title: 'Connexion au serveur WebSocket.'
-        });
-
-        chrome.browserAction.disable();
-
-        stream.onended = function() {
-            setDefaults();
-            chrome.runtime.reload();
-        };
-
-        stream.getVideoTracks()[0].onended = stream.onended;
-        if (stream.getAudioTracks().length) {
-            stream.getAudioTracks()[0].onended = stream.onended;
-        }
-
-        function isMediaStreamActive() {
-            if ('active' in stream) {
-                if (!stream.active) {
-                    return false;
-                }
-            } else if ('ended' in stream) {
-                if (stream.ended) {
-                    return false;
-                }
+function captureTabUsingTabCapture() {
+    constraints = {
+        audio: true,
+        video: true,
+        videoConstraints: {
+            mandatory: {
+                chromeMediaSource: 'tab',
+                maxWidth: screen.width,
+                maxHeight: screen.height,
+                minFrameRate: 30,
+                maxFrameRate: 64,
+                minAspectRatio: 1.77
             }
-            return true;
         }
+    };
 
-        (function looper() {
-            if (isMediaStreamActive() === false) {
-                stream.onended();
-                return;
-            }
+    chrome.tabCapture.capture(constraints, function(stream) {
+        gotStream(stream);
+    });
+}
 
-            setTimeout(looper, 1000);
-        })();
-
-        chrome.windows.create({
-            url: chrome.extension.getURL('_generated_background_page.html'),
-            type: 'popup',
-            focused: false,
-            width: 1,
-            height: 1,
-            top: parseInt(screen.height),
-            left: parseInt(screen.width)
-        }, function(win) {
-            var background_page_id = win.id;
-
-            setTimeout(function() {
-                chrome.windows.remove(background_page_id);
-            }, 3000);
-        });
-
-        setupRTCMultiConnection(stream);
-
-        chrome.browserAction.setIcon({
-            path: 'images/pause22.png'
-        });
-    }
-
-    function getUserMediaError(e) {
+function gotStream(stream) {
+    if (!stream) {
         setDefaults();
         chrome.windows.create({
-            url: "data:text/html,<h1>getUserMediaError: " + JSON.stringify(e, null, '<br>') + "</h1><br>Contraintes utilisées:<br><pre>" + JSON.stringify(constraints, null, '<br>') + '</pre>',
+            url: "data:text/html,<h1>Internal error occurred while capturing the screen.</h1>",
             type: 'popup',
             width: screen.width / 2,
             height: 170
         });
+        return;
     }
+
+    chrome.browserAction.setTitle({
+        title: 'Connecting to WebSockets server.'
+    });
+
+    chrome.browserAction.disable();
+
+    stream.onended = function() {
+        setDefaults();
+        chrome.runtime.reload();
+    };
+
+    stream.getVideoTracks()[0].onended = stream.onended;
+    if (stream.getAudioTracks().length) {
+        stream.getAudioTracks()[0].onended = stream.onended;
+    }
+
+    function isMediaStreamActive() {
+        if ('active' in stream) {
+            if (!stream.active) {
+                return false;
+            }
+        } else if ('ended' in stream) { // old hack
+            if (stream.ended) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // this method checks if media stream is stopped
+    // or any track is ended.
+    (function looper() {
+        if (isMediaStreamActive() === false) {
+            stream.onended();
+            return;
+        }
+
+        setTimeout(looper, 1000); // check every second
+    })();
+
+    // as it is reported that if you drag chrome screen's status-bar
+    // and scroll up/down the screen-viewer page.
+    // chrome auto-stops the screen without firing any 'onended' event.
+    // chrome also hides screen status bar.
+    chrome.windows.create({
+        url: chrome.extension.getURL('_generated_background_page.html'),
+        type: 'popup',
+        focused: false,
+        width: 1,
+        height: 1,
+        top: parseInt(screen.height),
+        left: parseInt(screen.width)
+    }, function(win) {
+        var background_page_id = win.id;
+
+        setTimeout(function() {
+            chrome.windows.remove(background_page_id);
+        }, 3000);
+    });
+
+    setupRTCMultiConnection(stream);
+
+    chrome.browserAction.setIcon({
+        path: 'images/pause22.png'
+    });
+}
+
+function getUserMediaError(e) {
+    setDefaults();
+    chrome.windows.create({
+        url: "data:text/html,<h1>getUserMediaError: " + JSON.stringify(e, null, '<br>') + "</h1><br>Constraints used:<br><pre>" + JSON.stringify(constraints, null, '<br>') + '</pre>',
+        type: 'popup',
+        width: screen.width / 2,
+        height: 170
+    });
 }
 
 // RTCMultiConnection - www.RTCMultiConnection.org
@@ -246,7 +260,7 @@ function setBadgeText(text) {
     });
 
     chrome.browserAction.setTitle({
-        title: text + ' utilisateurs regardent le stream.'
+        title: text + ' users are viewing your screen!'
     });
 }
 
@@ -255,6 +269,7 @@ function setupRTCMultiConnection(stream) {
         isAudio = false;
     }
 
+    // www.RTCMultiConnection.org/docs/
     connection = new RTCMultiConnection();
 
     connection.optionalArgument = {
@@ -289,26 +304,18 @@ function setupRTCMultiConnection(stream) {
     connection.autoReDialOnFailure = true;
     connection.getExternalIceServers = false;
 
-    connection.iceServers.push({
-        urls: 'turn:webrtcweb.com:443',
-        username: 'muazkh',
-        credential: 'muazkh'
-    });
-
-    connection.iceServers.push({
-        urls: 'turn:webrtcweb.com:80',
-        username: 'muazkh',
-        credential: 'muazkh'
-    });
+    connection.iceServers = IceServersHandler.getIceServers();
 
     setBandwidth(connection);
 
+    // www.RTCMultiConnection.org/docs/session/
     connection.session = {
-        audio: !!isAudio && chromeVersion >= 50,
+        audio: !!isAudio,
         video: true,
         oneway: true
     };
 
+    // www.rtcmulticonnection.org/docs/sdpConstraints/
     connection.sdpConstraints.mandatory = {
         OfferToReceiveAudio: true,
         OfferToReceiveVideo: true
@@ -321,8 +328,10 @@ function setupRTCMultiConnection(stream) {
         } catch (e) {}
     };
 
+    // www.RTCMultiConnection.org/docs/dontCaptureUserMedia/
     connection.dontCaptureUserMedia = true;
 
+    // www.RTCMultiConnection.org/docs/attachStreams/
     connection.attachStreams.push(stream);
 
     if (room_password && room_password.length) {
@@ -330,7 +339,7 @@ function setupRTCMultiConnection(stream) {
             if (request.extra.password !== room_password) {
                 connection.reject(request);
                 chrome.windows.create({
-                    url: "data:text/html,<h1>Un utilisateur a essayé de joindre votre stream avec un mot de passe incorrect. Sa requête a été refusée. Mot de passe entré : " + request.extra.password + " </h2>",
+                    url: "data:text/html,<h1>A user tried to join your room with invalid password. His request is rejected. He tried password: " + request.extra.password + " </h2>",
                     type: 'popup',
                     width: screen.width / 2,
                     height: 170
@@ -342,6 +351,7 @@ function setupRTCMultiConnection(stream) {
         };
     }
 
+    // www.RTCMultiConnection.org/docs/openSignalingChannel/
     var onMessageCallbacks = {};
     var pub = 'pub-c-3c0fc243-9892-4858-aa38-1445e58b4ecb';
     var sub = 'sub-c-d0c386c6-7263-11e2-8b02-12313f022c90';
@@ -397,12 +407,14 @@ function setupRTCMultiConnection(stream) {
         websocket.push(JSON.stringify(data));
     };
 
+    // overriding "openSignalingChannel" method
     connection.openSignalingChannel = function(config) {
         var channel = config.channel || this.channel;
         onMessageCallbacks[channel] = config.onmessage;
 
         if (config.onopen) setTimeout(config.onopen, 1000);
 
+        // directly returning socket object using "return" statement
         return {
             send: function(message) {
                 websocket.send({
@@ -418,7 +430,7 @@ function setupRTCMultiConnection(stream) {
     websocket.onerror = function() {
         if (!!connection && connection.attachStreams.length) {
             chrome.windows.create({
-                url: "data:text/html,<h1>Erreur de connexion au serveur WebSocket. Veuillez réessayer.</h1>",
+                url: "data:text/html,<h1>Failed connecting the WebSockets server. Please click screen icon to try again.</h1>",
                 type: 'popup',
                 width: screen.width / 2,
                 height: 170
@@ -432,7 +444,7 @@ function setupRTCMultiConnection(stream) {
     websocket.onclose = function() {
         if (!!connection && connection.attachStreams.length) {
             chrome.windows.create({
-                url: "data:text/html,<p style='font-size:25px;'><span style='color:red;'><span>Impossible de joindre le serveur WebSocket</span>. WebSockets is nécessaire.<br><br>Veuillez <span style='color:green;'>cliquer sur l'icone</span> une nouvelle pour réessayer.</p>",
+                url: "data:text/html,<p style='font-size:25px;'><span style='color:red;'>Unable to reach the WebSockets server</span>. WebSockets is required/used to help opening media ports between your system and target users' systems (for p2p-streaming).<br><br>Please <span style='color:green;'>click screen icon</span> to share again.</p>",
                 type: 'popup',
                 width: screen.width / 2,
                 height: 200
@@ -450,11 +462,12 @@ function setupRTCMultiConnection(stream) {
 
         console.info('WebSockets connection is opened.');
 
+        // www.RTCMultiConnection.org/docs/open/
         var sessionDescription = connection.open({
             dontTransmit: true
         });
 
-        var resultingURL = 'https://malv.fr/uniview/index.html';
+        var resultingURL = 'https://webrtcweb.com/screen?s=' + connection.sessionid;
 
         if (room_password && room_password.length) {
             resultingURL += '&p=' + room_password;
@@ -464,7 +477,7 @@ function setupRTCMultiConnection(stream) {
         var popup_height = 170;
 
         chrome.windows.create({
-            url: "data:text/html,<title>Document prêt à être envoyé</title><h1 style='text-align:center'>Veuillez partager cette URL:</h1><input type='text' value='" + resultingURL + "' style='text-align:center;width:100%;font-size:1.2em;'>",
+            url: "data:text/html,<title>Unique Room URL</title><h1 style='text-align:center'>Copy following private URL:</h1><input type='text' value='" + resultingURL + "' style='text-align:center;width:100%;font-size:1.2em;'><p style='text-align:center'>You can share this private-session URI with fellows using email or social networks.</p>",
             type: 'popup',
             width: popup_width,
             height: popup_height,
@@ -505,6 +518,7 @@ function setDefaults() {
 }
 
 function setBandwidth(connection) {
+    // www.RTCMultiConnection.org/docs/bandwidth/
     connection.bandwidth = {};
     connection.bandwidth.video = connection.bandwidth.screen = max_bandwidth;
     connection.bandwidth.audio = 128;
@@ -528,12 +542,6 @@ function setBandwidth(connection) {
         sdp = CodecsHandler.preferVP9(sdp);
         return sdp;
     };
-}
-
-var chromeVersion = 49;
-var matchArray = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
-if (matchArray && matchArray[2]) {
-    chromeVersion = parseInt(matchArray[2], 10);
 }
 
 // Check whether new version is installed

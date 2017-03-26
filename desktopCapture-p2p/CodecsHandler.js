@@ -1,3 +1,4 @@
+// CodecsHandler.js
 
 var CodecsHandler = (function() {
     var isMobileDevice = !!navigator.userAgent.match(/Android|iPhone|iPad|iPod|BlackBerry|IEMobile/i);
@@ -9,11 +10,13 @@ var CodecsHandler = (function() {
         isMobileDevice = true;
     }
 
+    // "removeVPX" and "removeNonG722" methods are taken from github/mozilla/webrtc-landing
     function removeVPX(sdp) {
         if (!sdp || typeof sdp !== 'string') {
             throw 'Invalid arguments.';
         }
 
+        // this method is NOT reliable
 
         sdp = sdp.replace('a=rtpmap:100 VP8/90000\r\n', '');
         sdp = sdp.replace('a=rtpmap:101 VP9/90000\r\n', '');
@@ -88,17 +91,19 @@ var CodecsHandler = (function() {
 
         if (isScreen) {
             if (!bandwidth.screen) {
-                console.warn('Veuillez entrer un nombre pour la bande passante. Dans le cas échéant le stream ne fonctionnera pas.');
+                console.warn('It seems that you are not using bandwidth for screen. Screen sharing is expected to fail.');
             } else if (bandwidth.screen < 300) {
-                console.warn('Veuillez entrer une valeur supérieur. Dans le cas échéant le stream ne fonctionnera pas.');
+                console.warn('It seems that you are using wrong bandwidth value for screen. Screen sharing is expected to fail.');
             }
         }
 
+        // if screen; must use at least 300kbs
         if (bandwidth.screen && isScreen) {
             sdp = sdp.replace(/b=AS([^\r\n]+\r\n)/g, '');
             sdp = sdp.replace(/a=mid:video\r\n/g, 'a=mid:video\r\nb=AS:' + bandwidth.screen + '\r\n');
         }
 
+        // remove existing bandwidth lines
         if (bandwidth.audio || bandwidth.video || bandwidth.data) {
             sdp = sdp.replace(/b=AS([^\r\n]+\r\n)/g, '');
         }
@@ -114,10 +119,14 @@ var CodecsHandler = (function() {
         return sdp;
     }
 
+    // Find the line in sdpLines that starts with |prefix|, and, if specified,
+    // contains |substr| (case-insensitive search).
     function findLine(sdpLines, prefix, substr) {
         return findLineInRange(sdpLines, 0, -1, prefix, substr);
     }
 
+    // Find the line in sdpLines[startLine...endLine - 1] that starts with |prefix|
+    // and, if specified, contains |substr| (case-insensitive search).
     function findLineInRange(sdpLines, startLine, endLine, prefix, substr) {
         var realEndLine = endLine !== -1 ? endLine : sdpLines.length;
         for (var i = startLine; i < realEndLine; ++i) {
@@ -131,6 +140,7 @@ var CodecsHandler = (function() {
         return null;
     }
 
+    // Gets the codec payload type from an a=rtpmap:X line.
     function getCodecPayloadType(sdpLine) {
         var pattern = new RegExp('a=rtpmap:(\\d+) \\w+\\/\\d+');
         var result = sdpLine.match(pattern);
@@ -148,6 +158,7 @@ var CodecsHandler = (function() {
 
         var sdpLines = sdp.split('\r\n');
 
+        // VP8
         var vp8Index = findLine(sdpLines, 'a=rtpmap', 'VP8/90000');
         var vp8Payload;
         if (vp8Index) {
@@ -264,4 +275,5 @@ var CodecsHandler = (function() {
     };
 })();
 
+// backward compatibility
 window.BandwidthHandler = CodecsHandler;

@@ -66,7 +66,7 @@ document.getElementById('min_bandwidth').onblur = function() {
     var maxValue = parseInt(document.getElementById('max_bandwidth').value);
     var minValue = parseInt(document.getElementById('min_bandwidth').value);
     if(maxValue < minValue) {
-        console.log('La bande passante minimum doit être inférieure à la bande passante maximum.');
+        console.log('Min-Bandwidth must be lower than Max-Bandwidth.');
         document.getElementById('max_bandwidth').value = 
             document.getElementById('min_bandwidth').value = this.value;
         return;
@@ -85,7 +85,7 @@ document.getElementById('max_bandwidth').onblur = function() {
     var maxValue = parseInt(document.getElementById('max_bandwidth').value);
     var minValue = parseInt(document.getElementById('min_bandwidth').value);
     if(maxValue < minValue) {
-        console.log('La bande passante minimum doit être inférieure à la bande passante maximum.');
+        console.log('Min-Bandwidth must be lower than Max-Bandwidth.');
         document.getElementById('max_bandwidth').value = 
             document.getElementById('min_bandwidth').value = this.value;
         return;

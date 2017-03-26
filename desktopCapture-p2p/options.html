@@ -48,11 +48,32 @@ select[disabled] {
     <option value="360p">SD (360p)</option>
 </select>
 <hr>
-<h2>Bande passante:</h2>
-<label for="min_bandwidth">Bande passante minimale</label>
+<h2>Set Bandwidth:</h2>
+<label for="min_bandwidth">Minimum Bandwidth</label>
 <input type="text" id="min_bandwidth" value="512" style="width: 40px;">kbps
 <br><br>
-<label for="max_bandwidth">Bande passante maximale</label>
+<label for="max_bandwidth">Maximum Bandwidth</label>
 <input type="text" id="max_bandwidth" value="1048" style="width: 40px;">kbps
+<hr>
+<input type="checkbox" id="is_audio"> <label for="is_audio">Enable audio+tab sharing?</label>
+<hr>
+<h2>Password Protected Room?</h2>
+<label for="room_password">Set Password</label>
+<input type="password" id="room_password" value="">
+<br>
+<small>Keep empty for NO password.</small>
+<hr>
+<h2>Set Your Own Room ID:</h2>
+<label for="room_id">Set Room ID</label>
+<input type="text" id="room_id" value="">
+<br>
+<small>
+    It will use your room-id instead of generating random string.
+    <br>
+    E.g. You can always share this with screen viewers:
+    <br>
+    https://webrtcweb.com/screen?s=your_room_id<br>or<br>
+    https://www.webrtc-experiment.com/!/?s=your_room_id
+</small>
 
 <script src="options.js"></script>
