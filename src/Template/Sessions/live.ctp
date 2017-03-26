@@ -165,7 +165,7 @@
 
 <div class="mdl-grid" style="margin-top : 40px;">
     <div id="videoleft" class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ">
-        <div id="rooms-list" class="video-prof-card mdl-card mdl-shadow--2dp " >
+        <div class="video-prof-card mdl-card mdl-shadow--2dp " >
                 <a id="setup-new-broadcast" onclick="setupNewBroadcastButtonClickHandler();" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect comment-btn-send">
                     Démarrer votre webcam
                 </a>
