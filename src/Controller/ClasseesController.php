@@ -18,7 +18,7 @@ class ClasseesController extends AppController
      */
     public function index()
     {
-        $classees = $this->paginate($this->Classees);
+        $classees = $this->paginate($this->Classees, ['limit' => 1000]);
 
         $this->set(compact('classees'));
         $this->set('_serialize', ['classees']);

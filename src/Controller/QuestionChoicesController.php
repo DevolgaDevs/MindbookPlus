@@ -28,7 +28,7 @@ class QuestionChoicesController extends AppController
      */
     public function index()
     {
-        $questionChoices = $this->paginate($this->QuestionChoices);
+        $questionChoices = $this->paginate($this->QuestionChoices, ['limit' => 1000]);
 
         $this->set(compact('questionChoices'));
         $this->set('_serialize', ['questionChoices']);

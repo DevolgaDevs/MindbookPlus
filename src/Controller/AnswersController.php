@@ -18,7 +18,7 @@ class AnswersController extends AppController
      */
     public function index()
     {
-        $answers = $this->paginate($this->Answers);
+        $answers = $this->paginate($this->Answers, ['limit' => 1000]);
 
         $this->set(compact('answers'));
         $this->set('_serialize', ['answers']);

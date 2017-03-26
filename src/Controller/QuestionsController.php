@@ -26,7 +26,7 @@ class QuestionsController extends AppController
      */
     public function index()
     {
-        $questions = $this->paginate($this->Questions);
+        $questions = $this->paginate($this->Questions, ['limit' => 1000]);
 
         $this->set(compact('questions'));
         $this->set('_serialize', ['questions']);
@@ -34,7 +34,7 @@ class QuestionsController extends AppController
 
     public function session($id = null)
     {
-        $questions = $this->paginate($this->Questions->find('all')->where(['sessionId' => $id]));
+        $questions = $this->paginate($this->Questions->find('all')->where(['sessionId' => $id]), ['limit' => 1000]);
         $this->set('sessionId', $id);
 
         $this->set(compact('questions'));

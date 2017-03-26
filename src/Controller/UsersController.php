@@ -72,7 +72,7 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $users = $this->paginate($this->Users);
+        $users = $this->paginate($this->Users, ['limit' => 1000]);
 
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
