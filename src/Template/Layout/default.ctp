@@ -62,13 +62,9 @@ $cakeDescription = 'Mindbook';
 
                 <a style="margin-top:40px" class="mdl-navigation__link" href="/dashboard"><i class="material-icons">dashboard</i> Tableau de bord</a>
 
-                <a class="mdl-navigation__link" href="/users/view/'<?php $this->request->session()->read('Auth.User.id')?>"><i class="material-icons">account_box</i> Profil</a>
-
-                <?php if ($this->request->session()->read('Auth.User.isTeacher') || $this->request->session()->read('Auth.User.isAdmin')) : ?>
+                <?= $this->Html->link(__('View'), ['controller' => 'users','action' => 'view', $this->request->session()->read('Auth.User.id')], ['class' => 'mdl-navigation__link']) ?>
 
                     <a class="mdl-navigation__link" href="/sessions"><i class="material-icons">visibility</i> Sessions</a>
-
-                <?php endif; ?>
 
                 <?php if ($this->request->session()->read('Auth.User.isAdmin')) : ?>
 
