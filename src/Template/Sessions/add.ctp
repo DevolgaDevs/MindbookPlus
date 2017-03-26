@@ -8,7 +8,7 @@
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
                         <div class="mdl-card session-list-card " style="overflow-y : auto; height : 650px;">
                             <div class="mdl-card__actions mdl-card--border">
-                                <h4 class="profil-list-titre">Ajouter un utilisateur</h4>
+                                <h4 class="profil-list-titre">Créer une nouvelle session</h4>
                             </div>
                             <?= $this->Form->create($session) ?>
                             <fieldset style="padding :30px;">

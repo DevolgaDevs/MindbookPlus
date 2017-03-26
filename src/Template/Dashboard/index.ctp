@@ -29,7 +29,7 @@
                             Accéder à la gestion complète de vos données personnelles.
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            <a href="/users/view/1" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                                     Consulter mon profil
                                 </a>
                         </div>
@@ -45,7 +45,7 @@
                             Accéder aux notes et aux détails de vos résultats de sessions.
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            <a href="/results" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                                     Voir mes résultats
                                 </a>
                         </div>
@@ -61,7 +61,7 @@
                             Accéder à la gestion de vos sessions : ajouts, modifications ou suppressions.
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            <a href="/sessions/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                                     Voir les sessions
                                 </a>
                         </div>

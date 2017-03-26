@@ -6,7 +6,7 @@
 
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
-                        <div class="mdl-card session-list-card " style="overflow-y : auto; height : 550px;">
+                        <div class="mdl-card session-list-card " style="overflow-y : auto; height : 650px;">
                             <div class="mdl-card__actions mdl-card--border">
                                 <h4 class="profil-list-titre">Liste des utilisateurs</h4>
                             </div>
@@ -46,18 +46,4 @@
                         </div>
                     </div>
                 </div>
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
-                        <div class="mdl-card session-list-card mdl-shadow--2dp" style="overflow-y : auto; height : 55px; margin-top:-31px">
-                            <div class="mdl-card__actions mdl-card--border">
-                                <div class="paginator" style="text-align:center">
-                                    <?= $this->Paginator->first('<< ' . __('Début')) ?>
-                                    <?= $this->Paginator->prev('< ' . __('Page précédente')) ?>
-                                    <?= $this->Paginator->numbers() ?>
-                                    <?= $this->Paginator->next(__('Page suivante') . ' >') ?>
-                                    <?= $this->Paginator->last(__('Fin') . ' >>') ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               

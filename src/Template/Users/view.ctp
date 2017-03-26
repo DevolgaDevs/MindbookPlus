@@ -3,9 +3,39 @@
   * @var \App\View\AppView $this
   */
 ?>
+<div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
+                        <div class="mdl-card session-list-card " style="overflow-y : auto; height : 650px;">
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h4 class="profil-list-titre">Informations sur l'utilisateur</h4>
+                            </div>
+                            <hr>
+
+                            <h3 style="margin-left:30px;"><?= h($user->firstname) ?> <?= h($user->lastname) ?></h3>
+                            <h6 style="margin-left:30px;"><b>Nom d'utilisateur : </b><?= h($user->username) ?></h6><br />
+                            <h6 style="margin-left:30px; margin-top:-20px;"><b>Mot de passe : </b><?= h($user->password) ?></h6><br />
+                            <h6 style="margin-left:30px; margin-top:-20px;"><b>ID Utilisateur : </b><?= $this->Number->format($user->id) ?></h6><br />
+                            <h6 style="margin-left:30px; margin-top:-20px;"><b>Promotion : </b><?= $this->Number->format($user->classId) ?></h6><br />
+                            <h6 style="margin-left:30px; margin-top:-20px;"><b>Droit d'administration : </b><?= $user->isAdmin ? __('Yes') : __('No'); ?></h6><br />
+                            <h6 style="margin-left:30px; margin-top:-20px;"><b>Statut Professeur : </b><?= $user->isTeacher ? __('Yes') : __('No'); ?></h6>
+                            <br /><br /><br /><br /><br /><br />
+                            <div style="align : center; margin-left:30px;"><a href="/users/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #3d91ff; color : #ffffff;">
+                                    < Retour à la liste
+                                </a> <a href="/users/edit/<?= $this->Number->format($user->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
+                                    Editer cet utilisateur
+                                </a> <a href="/users/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #ff4a4a; color : #ffffff;">
+                                    Supprimer cet utilisateur
+                                </a></div>
+                        </div>
+                    </div>
+                </div>
+
+
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+        <a href="/sessions/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                    Voir les sessions
+                                </a><li class="heading"></li>
         <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
@@ -13,39 +43,5 @@
     </ul>
 </nav>
 <div class="users view large-9 medium-8 columns content">
-    <h3><?= h($user->username) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Username') ?></th>
-            <td><?= h($user->username) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Firstname') ?></th>
-            <td><?= h($user->firstname) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Lastname') ?></th>
-            <td><?= h($user->lastname) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Password') ?></th>
-            <td><?= h($user->password) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($user->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('ClassId') ?></th>
-            <td><?= $this->Number->format($user->classId) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('IsAdmin') ?></th>
-            <td><?= $user->isAdmin ? __('Yes') : __('No'); ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('IsTeacher') ?></th>
-            <td><?= $user->isTeacher ? __('Yes') : __('No'); ?></td>
-        </tr>
-    </table>
+    
 </div>
