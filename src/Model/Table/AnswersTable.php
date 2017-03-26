@@ -33,6 +33,8 @@ class AnswersTable extends Table
         $this->setTable('answers');
         $this->setDisplayField('text');
         $this->setPrimaryKey('id');
+
+        $this->hasMany('questionAnswers');
     }
 
     /**

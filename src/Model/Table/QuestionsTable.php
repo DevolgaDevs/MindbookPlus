@@ -35,6 +35,7 @@ class QuestionsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->belongsTo('sessions');
+        $this->hasMany('questionAnswers');
     }
 
     /**
