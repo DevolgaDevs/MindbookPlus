@@ -24,7 +24,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
-    <?= $this->Html->meta('icon'), $this->Html->url('../img/favicon.png') ?>
 
     <?= $this->Html->css('jquery-ui.css') ?>
     <?= $this->Html->css('extended.css') ?>
@@ -35,7 +34,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->script('jquery.min.js') ?>
     <?= $this->Html->script('material.js') ?>
     <?= $this->Html->script('jquery-ui.js') ?>
-    <?= $this->Html->script('mdl-selectfiel.js') ?>
+    <?= $this->Html->script('mdl-selectfield.js') ?>
 </head>
 <body>
     <div id="layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
