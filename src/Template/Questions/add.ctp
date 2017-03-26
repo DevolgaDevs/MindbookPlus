@@ -28,6 +28,8 @@
                                     echo '<span class="mdl-switch__label">Cette question est ouverte</span>';
                                     echo '</label>';
                                     echo '<br />';
+                                    echo '<br />';
+                                    echo '<br />';
                                     echo $this->Form->control('sessionId', array('type'=>'select','options'=>$sessions, 'class' => 'mdl-selectfield__select'));
                                     echo '<br />';
                                     echo '<br />';
