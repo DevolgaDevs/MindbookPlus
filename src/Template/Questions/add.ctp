@@ -3,11 +3,6 @@
   * @var \App\View\AppView $this
   */
 ?>
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
 
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
