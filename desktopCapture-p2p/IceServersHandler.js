@@ -1,4 +1,3 @@
-// https://github.com/muaz-khan/RTCMultiConnection/blob/master/dev/IceServersHandler.js
 
 var IceServersHandler = (function() {
     function getIceServers(connection) {
@@ -13,10 +12,7 @@ var IceServersHandler = (function() {
         iceServers.push(getTURNObj('turns:webrtcweb.com:7788', 'muazkh', 'muazkh')); // coTURN
         iceServers.push(getTURNObj('turns:webrtcweb.com:8877', 'muazkh', 'muazkh')); // coTURN
 
-        // iceServers.push(getTURNObj('turn:webrtcweb.com:3344', 'muazkh', 'muazkh')); // resiprocate
-        // iceServers.push(getTURNObj('turn:webrtcweb.com:4433', 'muazkh', 'muazkh')); // resiprocate
 
-        // check if restund is still active: http://webrtcweb.com:4050/
         iceServers.push(getTURNObj('stun:webrtcweb.com:4455', 'muazkh', 'muazkh')); // restund
         iceServers.push(getTURNObj('turn:webrtcweb.com:4455', 'muazkh', 'muazkh')); // restund
         iceServers.push(getTURNObj('turn:webrtcweb.com:5544?transport=tcp', 'muazkh', 'muazkh')); // restund

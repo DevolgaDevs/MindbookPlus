@@ -1,11 +1,4 @@
-﻿// Muaz Khan     - https://github.com/muaz-khan
-// MIT License   - https://www.WebRTC-Experiment.com/licence/
-// Source Code   - https://github.com/muaz-khan/Chrome-Extensions
-
-// this page is using desktopCapture API to capture and share desktop
-// http://developer.chrome.com/extensions/desktopCapture.html
-
-chrome.browserAction.onClicked.addListener(captureDesktop);
+﻿chrome.browserAction.onClicked.addListener(captureDesktop);
 
 window.addEventListener('offline', function() {
     if (!connection || !connection.attachStreams.length) return;
