@@ -50,9 +50,12 @@
 <div class="mdl-grid" style="margin-top : 40px;">
     <div id="videoleft" class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ">
         <div class="video-prof-card mdl-card mdl-shadow--2dp " >
+            <?php if ($this->request->session()->read('Auth.User.isTeacher')) : ?>
                 <a style="margin-top:160px; height : 80px; font-size: 25px; color:#A2A2A2;"id="setup-new-broadcast" onclick="setupNewBroadcastButtonClickHandler();" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect comment-btn-send">
                     Démarrer votre webcam
                 </a>
+            <?php endif; ?>
+
                 <table style="width: 100%;" id="rooms-list"></table>
                 <div id="videos-container" style="width:100%; height:100%;"></div>
             </section>
