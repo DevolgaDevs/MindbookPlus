@@ -22,6 +22,7 @@
                                     echo '<br />';
                                     echo $this->Form->control('text', array('class' => 'mdl-textfield__input'));
                                     echo '<br />';
+                                    echo '<br />';
                                     echo '<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isOpenQuestion">';
                                     echo '<input type="checkbox" id="isOpenQuestion" class="mdl-switch__input">';
                                     echo '<span class="mdl-switch__label">Cette question est ouverte</span>';

@@ -6,7 +6,7 @@
 
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
-                        <div class="mdl-card session-list-card " style="overflow-y : auto; height : 650px;">
+                        <div class="mdl-card session-list-card mdl-shadow--2dp" style="overflow-y : auto; height : 550px;">
                             <div class="mdl-card__actions mdl-card--border">
                                 <h4 class="profil-list-titre">Liste des questions</h4>
                             </div>
@@ -35,6 +35,16 @@
                                 </tbody>
                             </table>
                             
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
+                        <div class="mdl-card session-list-card mdl-shadow--2dp" style="height : 35px; margin-top:-20px;">
+                            <a href="/questions/add" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
+                            style="background-color: #00c96f; color : #ffffff;  height:50px; ">
+                                    <span style="margin-top:20px">Ajouter une question</span>
+                                </a>
                         </div>
                     </div>
                 </div>

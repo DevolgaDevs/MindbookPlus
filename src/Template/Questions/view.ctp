@@ -3,6 +3,26 @@
   * @var \App\View\AppView $this
   */
 ?>
+<div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
+                        <div class="mdl-card session-list-card " style="overflow-y : auto; height : 650px;">
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h4 class="profil-list-titre">Informations sur une question</h4>
+                            </div>
+                            <hr>
+                            <h3 style="margin-left:30px;">Question : <?= h($question->text) ?></h3>
+                            <h6 style="margin-left:30px;"><b>ID Question : </b><?= $this->Number->format($question->id) ?></h6><br />
+                            <h6 style="margin-left:30px; margin-top:-20px;"><b>Type "Question ouverte" : </b><?= $question->isOpenQuestion ? __('Yes') : __('No'); ?></h6><br />
+                            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                            <div style="align : center; margin-left:30px;"><a href="/questions/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #3d91ff; color : #ffffff;">
+                                    < Retour à la liste
+                                </a> <a href="/questions/edit/<?= $this->Number->format($question->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
+                                    Editer cette session
+                                </a> </div>
+                        </div>
+                    </div>
+                </div>
+
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
@@ -12,20 +32,3 @@
         <li><?= $this->Html->link(__('New Question'), ['action' => 'add']) ?> </li>
     </ul>
 </nav>
-<div class="questions view large-9 medium-8 columns content">
-    <h3><?= h($question->QUESTION_ID) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($question->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('IsOpenQuestion') ?></th>
-            <td><?= $question->isOpenQuestion ? __('Yes') : __('No'); ?></td>
-        </tr>
-    </table>
-    <div class="row">
-        <h4><?= __('Text') ?></h4>
-        <?= $this->Text->autoParagraph(h($question->text)); ?>
-    </div>
-</div>

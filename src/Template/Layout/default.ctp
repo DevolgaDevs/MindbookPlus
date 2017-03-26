@@ -24,7 +24,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
-    <?= $this->Html->meta('icon') ?>
+    <?= $this->Html->meta('icon'), $this->Html->url('../img/favicon.png') ?>
 
     <?= $this->Html->css('jquery-ui.css') ?>
     <?= $this->Html->css('extended.css') ?>
@@ -61,8 +61,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <div class="mdl-layout-title logotext">min<span class="logotext-color">db</span>ook</div>
             <nav class="mdl-navigation">
                 <a style="margin-top:40px" class="mdl-navigation__link" href="/dashboard"><i class="material-icons">dashboard</i> Tableau de bord</a>
-                <a class="mdl-navigation__link" href="/users/view/<=?$this->request->session()->read('Auth.User.id')?>"><i class="material-icons">account_box</i> Profil</a>
-                <a class="mdl-navigation__link" href="/sessions/etudiant"><i class="material-icons">visibility</i> Sessions</a>
+                <a class="mdl-navigation__link" href="/users/view/"><i class="material-icons">account_box</i> Profil</a>
+                <a class="mdl-navigation__link" href="/sessions"><i class="material-icons">visibility</i> Sessions</a>
                 <a class="mdl-navigation__link" href="/users"><i class="material-icons">fingerprint</i> Utilisateurs</a>
                 <a class="mdl-navigation__link" href="/results"><i class="material-icons">assessment</i> Résultats</a>
                 <a class="mdl-navigation__link" href="/info"><i class="material-icons">info_outline</i> Informations</a>
