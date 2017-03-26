@@ -170,7 +170,9 @@
                     Démarrer votre webcam
                 </a>
 
-                <div id="videos-container" style="width:100%; height:100%; object-fit: cover;"></div>
+                <table style="width: 100%;" id="rooms-list"></table>
+
+                <div id="videos-container" style="width:100%; height:100%"></div>
             </section>
         </div>
     </div>
