@@ -12,9 +12,9 @@
                                 <p class="abouttext">WebRTC<br/>
                                     <a href="https://webrtc.org/license/software/">https://webrtc.org/license/software/</a></p><br/>
 
-                                <img class="abouttext" src="../img/angular.png" style="width : 100px; height:100px;"><br/>
-                                <p class="abouttext">AngularJS<br/>
-                                    <a href="https://angular.io/license">https://angular.io/license</a></p><br/>
+                                <img class="abouttext" src="../img/cakephp.png" style="width : 212px; height:49px;"><br/>
+                                <p class="abouttext">CakePHP<br/>
+                                    <a href="https://raw.githubusercontent.com/cakephp/cakephp/master/LICENSE.txt">https://raw.githubusercontent.com/cakephp/cakephp/master/LICENSE.txt</a></p><br/>
 
                                 <img class="abouttext" src="../img/mdl_logo.png" style="width : 100px; height:103px;"><br/>
                                 <p class="abouttext">Material Design Lite by Google<br/>
