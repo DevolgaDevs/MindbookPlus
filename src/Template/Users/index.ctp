@@ -49,7 +49,7 @@
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
                         <div class="mdl-card session-list-card mdl-shadow--2dp" style="height : 35px; margin-top:-20px;">
-                            <a href="/sessions/add" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
+                            <a href="/users/add" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
                             style="background-color: #00c96f; color : #ffffff;  height:50px; ">
                                     <span style="margin-top:20px">Ajouter une question</span>
                                 </a>

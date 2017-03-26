@@ -25,8 +25,8 @@
                                     echo '<br />';
                                     echo '<br />';
                                     echo '<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="hasQuestions">';
-                                    echo '<input type="checkbox" id="hasQuestions" class="mdl-switch__input">';
-                                    echo '<span class="mdl-switch__label">Cette session contient un QCM</span>';
+                                    echo $this->Form->control('hasQuestions', array('type'=>'checkbox','id' => 'hasQuestions', 'class' => 'mdl-switch__input'));
+                                    echo '</label>';
                                     echo '</label>';
                                     echo '<br />';
                                     echo '<br />';

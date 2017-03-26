@@ -24,14 +24,12 @@
                                     echo $this->Form->control('classId', array('type'=>'select','options'=>$classees, 'class' => 'mdl-selectfield__select'));
                                     echo '<br />';
                                     echo '<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isAdmin">';
-                                    echo '<input type="checkbox" id="isAdmin" class="mdl-switch__input">';
-                                    echo '<span class="mdl-switch__label">Autoriser l\'administration</span>';
-                                    echo '</label>';
-                                    echo '<br /><br />';
+                                    echo $this->Form->control('isAdmin', array('type'=>'checkbox','id' => 'isAdmin', 'class' => 'mdl-switch__input'));
+                                    echo '</label>';;
+                                    echo '<br />';
                                     echo '<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isTeacher">';
-                                    echo '<input type="checkbox" id="isTeacher" class="mdl-switch__input">';
-                                    echo '<span class="mdl-switch__label">Définir en tant que professeur</span>';
-                                    echo '</label>';
+                                    echo $this->Form->control('isTeacher', array('type'=>'checkbox','id' => 'isTeacher', 'class' => 'mdl-switch__input'));
+                                    echo '</label>';;
                                     echo '<br />';
                                 ?>
                             </fieldset>
