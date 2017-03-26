@@ -34,9 +34,7 @@
                                         <td class="mdl-data-table__cell--non-numeric"><?= h($user->isTeacher) ?></td>
                                         <td class="mdl-data-table__cell--non-numeric"><?= $this->Number->format($user->classId) ?></td>
                                         <td class="actions" style="text-align:right;">
-                                            <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
-                                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                                            <?= $this->Html->link('En savoir plus',['action' => 'view', $user->id], ['class' => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect', 'style' => 'color : #5C6BC0; margin-right: -16px;']) ?>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>
