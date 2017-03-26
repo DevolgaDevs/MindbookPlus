@@ -41,9 +41,10 @@
 
 
 <span style="position : absolute; right: 50px; top:17px;">
+    <?= h($session->name) ?>
     <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isResizeMode">
     <input type="checkbox" id="isResizeMode" class="mdl-switch__input" onClick="validateTerms()">
-    <span class="mdl-switch__label"><b>Mode redimmensionnement</b></span>
+    <span class="mdl-switch__label"><b>Mode redimensionnement</b></span>
     </label>
 </span>
 
