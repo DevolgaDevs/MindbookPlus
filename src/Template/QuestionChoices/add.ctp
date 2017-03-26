@@ -9,22 +9,18 @@
             <div class="mdl-card__actions mdl-card--border">
                 <h4 class="profil-list-titre">Ajouter une question à un QCM</h4>
             </div>
-            <?= $this->Form->create($question) ?>
+            <?= $this->Form->create($questionChoice) ?>
             <fieldset style="padding :30px;">
                 <?php
-                    echo $this->Form->control('id', array('class' => 'mdl-textfield__input'));
+                    echo $this->Form->control('id');
                     echo '<br />';
-                    echo $this->Form->control('text', array('class' => 'mdl-textfield__input'));
-                    echo '<br />';
-                    echo '<br />';
-                    echo '<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isOpenQuestion">';
-                    echo '<input type="checkbox" id="isOpenQuestion" class="mdl-switch__input">';
-                    echo '<span class="mdl-switch__label">Cette question est ouverte</span>';
-                    echo '</label>';
+                    echo $this->Form->control('questionId', array('type'=>'select','options'=>$questions, 'class' => 'mdl-selectfield__select'));
                     echo '<br />';
                     echo '<br />';
+                    echo $this->Form->control('answerId', array('type'=>'select','options'=>$answers, 'class' => 'mdl-selectfield__select'));
                     echo '<br />';
-                    echo $this->Form->control('sessionId', array('type'=>'select','options'=>$sessions, 'class' => 'mdl-selectfield__select'));
+                    echo '<br />';
+                    echo $this->Form->control('userId', array('type'=>'select','options'=>$users, 'class' => 'mdl-selectfield__select'));
                     echo '<br />';
                     echo '<br />';
                 ?>
