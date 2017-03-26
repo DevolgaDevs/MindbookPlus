@@ -33,6 +33,15 @@ class QuestionAnswersController extends AppController
         $this->set('_serialize', ['questionAnswers']);
     }
 
+    public function question($id = null)
+    {
+        $questionAnswers = $this->paginate($this->QuestionAnswers->find('all')->where(['questionId' => $id]));
+        $this->set('questionId', $id);
+
+        $this->set(compact('questionAnswers'));
+        $this->set('_serialize', ['questionAnswers']);
+    }
+
     /**
      * View method
      *

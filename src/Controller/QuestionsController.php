@@ -32,9 +32,10 @@ class QuestionsController extends AppController
         $this->set('_serialize', ['questions']);
     }
 
-    public function link($id = null)
+    public function session($id = null)
     {
         $questions = $this->paginate($this->Questions->find('all')->where(['sessionId' => $id]));
+        $this->set('sessionId', $id);
 
         $this->set(compact('questions'));
         $this->set('_serialize', ['questions']);
