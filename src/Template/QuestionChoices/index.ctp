@@ -29,9 +29,9 @@
                 <td><?= $this->Number->format($questionChoice->answerId) ?></td>
                 <td><?= $this->Number->format($questionChoice->userId) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $questionChoice->QUESTION_CHOICE_ID]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $questionChoice->QUESTION_CHOICE_ID]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $questionChoice->QUESTION_CHOICE_ID], ['confirm' => __('Are you sure you want to delete # {0}?', $questionChoice->QUESTION_CHOICE_ID)]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $questionChoice->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $questionChoice->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $questionChoice->id], ['confirm' => __('Are you sure you want to delete # {0}?', $questionChoice->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

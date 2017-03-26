@@ -6,14 +6,14 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Question Choice'), ['action' => 'edit', $questionChoice->QUESTION_CHOICE_ID]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Question Choice'), ['action' => 'delete', $questionChoice->QUESTION_CHOICE_ID], ['confirm' => __('Are you sure you want to delete # {0}?', $questionChoice->QUESTION_CHOICE_ID)]) ?> </li>
+        <li><?= $this->Html->link(__('Edit Question Choice'), ['action' => 'edit', $questionChoice->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete Question Choice'), ['action' => 'delete', $questionChoice->id], ['confirm' => __('Are you sure you want to delete # {0}?', $questionChoice->QUESTION_CHOICE_ID)]) ?> </li>
         <li><?= $this->Html->link(__('List Question Choices'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Question Choice'), ['action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="questionChoices view large-9 medium-8 columns content">
-    <h3><?= h($questionChoice->QUESTION_CHOICE_ID) ?></h3>
+    <h3><?= h($questionChoice->id) ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Id') ?></th>
