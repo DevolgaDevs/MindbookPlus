@@ -357,6 +357,38 @@ video::-webkit-media-controls-panel {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.tools-round-img-topbar {
+    background-color: #3C445C;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    color: white;
+    border-radius: 50%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    margin: 0;
+    min-width: 64px;
+    padding: 0 16px;
+    display: inline-block;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 0;
+    overflow: hidden;
+    will-change: box-shadow;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    line-height: 36px;
+    vertical-align: middle;
+}
+
 .mdl-button-custom-top-profile {
     background-color: #6a6a6a;
     background-image: url('../img/profile.jpg');
@@ -583,4 +615,14 @@ a {
     text-align: center;
     width: 100%;
     font-family: 'Roboto', "Helvetica", "Arial", sans-serif;
+}
+
+.hide
+{
+    display:none;
+}
+
+.show
+{
+    display:initial;
 }
