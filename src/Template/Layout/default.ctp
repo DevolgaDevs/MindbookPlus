@@ -63,7 +63,7 @@ $cakeDescription = 'Mindbook';
 
                 <a class="mdl-navigation__link" style="margin-top:40px;" href="/dashboard"><i class="material-icons">dashboard</i> Dashboard</a>
 
-                    <?= $this->Html->link($this->Html->tag('i','account_box',array('class'=>'material-icons')), ['controller' => 'users','action' => 'view', $this->request->session()->read('Auth.User.id')], ['escape' => false,'class' => 'mdl-navigation__link']) ?>
+                    <?= $this->Html->link($this->Html->tag('i','account_box',array('class'=>'material-icons')). ' Profil', ['controller' => 'users','action' => 'view', $this->request->session()->read('Auth.User.id')], ['escape' => false,'class' => 'mdl-navigation__link']) ?>
 
                     <a class="mdl-navigation__link" href="/sessions"><i class="material-icons">visibility</i> Sessions</a>
 
