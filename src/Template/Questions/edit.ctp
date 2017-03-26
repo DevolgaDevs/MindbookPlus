@@ -3,11 +3,6 @@
   * @var \App\View\AppView $this
   */
 ?>
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
 
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
@@ -22,10 +17,13 @@
                                     echo '<br />';
                                     echo $this->Form->control('text', array('class' => 'mdl-textfield__input'));
                                     echo '<br />';
+                                    echo '<br />';
                                     echo '<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isOpenQuestion">';
                                     echo '<input type="checkbox" id="isOpenQuestion" class="mdl-switch__input">';
                                     echo '<span class="mdl-switch__label">Cette question est ouverte</span>';
                                     echo '</label>';
+                                    echo '<br />';
+                                    echo '<br />';
                                     echo '<br />';
                                     echo $this->Form->control('sessionId', array('type'=>'select','options'=>$sessions, 'class' => 'mdl-selectfield__select'));
                                     echo '<br />';
