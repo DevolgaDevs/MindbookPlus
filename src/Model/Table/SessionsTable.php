@@ -34,6 +34,8 @@ class SessionsTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
+        $this->hasMany('questions');
+
         $this->hasOne('classees');
         $this->hasOne('users');
     }

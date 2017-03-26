@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Questions Controller
@@ -10,6 +11,14 @@ use App\Controller\AppController;
  */
 class QuestionsController extends AppController
 {
+
+    function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+
+        $this->set('sessions', $this->Questions->Sessions->find('list', array('fields' =>array('id','name'))));
+
+    }
 
     /**
      * Index method

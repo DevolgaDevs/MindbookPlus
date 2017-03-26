@@ -33,6 +33,8 @@ class QuestionsTable extends Table
         $this->setTable('questions');
         $this->setDisplayField('text');
         $this->setPrimaryKey('id');
+
+        $this->belongsTo('sessions');
     }
 
     /**
