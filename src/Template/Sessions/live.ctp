@@ -50,28 +50,27 @@
 <div class="mdl-grid" style="margin-top : 40px;">
     <div id="videoleft" class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ">
         <div class="video-prof-card mdl-card mdl-shadow--2dp " >
-                <a id="setup-new-broadcast" onclick="setupNewBroadcastButtonClickHandler();" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect comment-btn-send">
+                <a style="margin-top:160px; height : 80px; font-size: 25px; color:#A2A2A2;"id="setup-new-broadcast" onclick="setupNewBroadcastButtonClickHandler();" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect comment-btn-send">
                     Démarrer votre webcam
                 </a>
                 <table style="width: 100%;" id="rooms-list"></table>
-                <div id="videos-container" style="width:100%; height:100%; object-fit: cover;"></div>
+                <div id="videos-container" style="width:100%; height:100%;"></div>
             </section>
         </div>
     </div>
     <div id="videoright" class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content draggable ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ">
         <div class="video-prof-card mdl-card mdl-shadow--2dp ">
             <div id="container" ondblclick="enterFullScreen()">
-            <div id="card">
-            <div id="remote">
-            <video id="remoteVideo" autoplay="autoplay"></video>
+                <div id="card">
+                    <div id="remote">
+                        <video id="remoteVideo" autoplay="autoplay"></video>
+                    </div>
+                </div>
+                <div id="info-bar"></div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div id="info-bar"></div>
-</div>
-        </div>
-    </div>
-</div>
 <div class="mdl-grid draggable">
     <div id="qcm" class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content ">
         <div class="qcm-card mdl-card mdl-shadow--2dp">
@@ -218,7 +217,11 @@
                 if (setupNewBroadcast) setupNewBroadcast.onclick = setupNewBroadcastButtonClickHandler;
 
             </script>
-            <script>
+
+
+
+
+<script>
 (function() {
     var params = {},
         r = /([^&=]+)=?([^&]*)/g;
