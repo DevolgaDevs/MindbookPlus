@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Sam 25 Mars 2017 à 13:52
+-- Généré le :  Dim 26 Mars 2017 à 13:29
 -- Version du serveur :  5.5.54-0+deb8u1
 -- Version de PHP :  5.6.30-0+deb8u1
 
@@ -67,7 +67,8 @@ INSERT INTO `classees` (`id`, `name`) VALUES
 CREATE TABLE IF NOT EXISTS `questions` (
 `id` int(11) NOT NULL,
   `text` varchar(255) DEFAULT NULL,
-  `isOpenQuestion` tinyint(1) DEFAULT NULL
+  `isOpenQuestion` tinyint(1) DEFAULT NULL,
+  `sessionId` int(11) NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
@@ -125,14 +126,15 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   `classId` int(11) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   `hasQuestions` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `sessions`
 --
 
 INSERT INTO `sessions` (`id`, `name`, `userId`, `classId`, `date`, `hasQuestions`) VALUES
-(1, 'Gestion des SI', 2, 1, '2017-03-25 23:00:00', NULL);
+(2, 'Architecture des SI', 2, 1, '2017-03-26 13:13:00', NULL),
+(3, 'Indexation et recherche d''information', 1, 1, '2017-03-27 09:37:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -149,15 +151,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `isAdmin` tinyint(1) DEFAULT NULL,
   `isTeacher` tinyint(1) DEFAULT NULL,
   `classId` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `firstname`, `lastname`, `password`, `isAdmin`, `isTeacher`, `classId`) VALUES
-(1, 'UserMail', 'UserFirstname', 'userLastname', 'UserPassword', 0, 0, 1),
-(2, 'Marvin', 'user2firstname', 'user2lastname', '$2y$10$aJdWDv/Bz1SF2O4jc2exA.VnOdr0Gofh29h4ITxXPDbKlWycHI79K', 0, 0, 2);
+(1, 'UserMail', 'UserFirstname', 'userLastname', 'UserPassword', 0, 0, 2),
+(2, 'Marvin', 'user2firstname', 'user2lastname', '$2y$10$aJdWDv/Bz1SF2O4jc2exA.VnOdr0Gofh29h4ITxXPDbKlWycHI79K', 0, 1, 2);
 
 --
 -- Index pour les tables exportées
@@ -197,7 +199,7 @@ ALTER TABLE `question_choices`
 -- Index pour la table `sessions`
 --
 ALTER TABLE `sessions`
- ADD PRIMARY KEY (`id`), ADD KEY `SESSION_USER_ID_idx` (`userId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `SESSION_USER_ID_idx` (`userId`), ADD KEY `SESSION_CLASS_ID` (`classId`);
 
 --
 -- Index pour la table `users`
@@ -238,15 +240,21 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT pour la table `sessions`
 --
 ALTER TABLE `sessions`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- Contraintes pour les tables exportées
 --
+
+--
+-- Contraintes pour la table `questions`
+--
+ALTER TABLE `questions`
+ADD CONSTRAINT `QUESTION_SESSION_ID` FOREIGN KEY (`sessionId`) REFERENCES `sessions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `question_answers`

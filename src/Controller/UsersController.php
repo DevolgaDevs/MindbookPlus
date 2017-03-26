@@ -15,7 +15,7 @@ class UsersController extends AppController
     {
         parent::beforeFilter($event);
 
-                $this->Auth->allow('register');
+        $this->Auth->allow('register');
 
         $this->set('classees', $this->Users->Classees->find('list', array('fields' =>array('id','name'))));
     }

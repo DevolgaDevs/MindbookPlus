@@ -19,6 +19,8 @@ class SessionsController extends AppController
     {
         parent::beforeFilter($event);
 
+        $this->set('classees', $this->Sessions->Users->Classees->find('list', array('fields' =>array('id','name'))));
+
         $this->getNextSession();
         //$huhuhu = $this->request->session()->read('Auth.User.username');
         //$this->set('huhuhu', $this->request->session()->read('Auth.User.username'));
