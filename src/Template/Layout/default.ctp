@@ -60,7 +60,7 @@ $cakeDescription = 'Mindbook';
             <div class="mdl-layout-title logotext">min<span class="logotext-color">db</span>ook</div>
             <nav class="mdl-navigation">
                 <a style="margin-top:40px" class="mdl-navigation__link" href="/dashboard"><i class="material-icons">dashboard</i> Tableau de bord</a>
-                <a class="mdl-navigation__link" href="/users/view/"><i class="material-icons">account_box</i> Profil</a>
+                <?= $this->Html->link(__('View'), ['action' => 'view', $this->request->session()->read('Auth.User.id')]) ?>
                 <?php if ($this->request->session()->read('Auth.User.isTeacher') || $this->request->session()->read('Auth.User.isAdmin')) : ?>
                     <a class="mdl-navigation__link" href="/sessions"><i class="material-icons">visibility</i> Sessions</a>
                 <?php endif; ?>
