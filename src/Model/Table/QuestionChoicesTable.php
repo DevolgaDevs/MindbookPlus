@@ -34,9 +34,9 @@ class QuestionChoicesTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->hasOne('questions');
-        $this->hasOne('answers');
-        $this->hasOne('users');
+        $this->belongsTo('questions');
+        $this->belongsTo('answers');
+        $this->belongsTo('users');
     }
 
     /**

@@ -34,7 +34,8 @@ class ClasseesTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->hasMany('classees');
+        $this->hasMany('users');
+        $this->hasMany('sessions');
     }
 
     /**

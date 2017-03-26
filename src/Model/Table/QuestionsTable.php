@@ -36,6 +36,7 @@ class QuestionsTable extends Table
 
         $this->belongsTo('sessions');
         $this->hasMany('questionAnswers');
+        $this->hasMany('questionChoices');
     }
 
     /**

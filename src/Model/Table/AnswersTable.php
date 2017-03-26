@@ -35,6 +35,7 @@ class AnswersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->hasMany('questionAnswers');
+        $this->hasMany('questionChoices');
     }
 
     /**

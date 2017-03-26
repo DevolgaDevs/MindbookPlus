@@ -36,8 +36,8 @@ class SessionsTable extends Table
 
         $this->hasMany('questions');
 
-        $this->hasOne('classees');
-        $this->hasOne('users');
+        $this->belongsTo('classees');
+        $this->belongsTo('users');
     }
 
     /**

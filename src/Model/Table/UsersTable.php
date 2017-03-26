@@ -35,6 +35,7 @@ class UsersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->belongsTo('classees');
+        $this->hasMany('questionAnswers');
     }
 
     /**
