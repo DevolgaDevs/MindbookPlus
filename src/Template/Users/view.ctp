@@ -21,9 +21,14 @@
                             <br /><br /><br /><br /><br /><br />
                             <div style="align : center; margin-left:30px;"><a href="/users/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #3d91ff; color : #ffffff;">
                                     < Retour à la liste
-                                </a> <a href="/users/edit/<?= $this->Number->format($user->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
+                                 </a>
+                                 </div>
+
+                            <?php if ($this->request->session()->read('Auth.User.isAdmin')) : ?>
+                                <a href="/users/edit/<?= $this->Number->format($user->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
                                     Editer cet utilisateur
-                                </a> </div>
+                                </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
