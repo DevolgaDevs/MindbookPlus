@@ -96,7 +96,6 @@
                 };
 
                 function setupNewBroadcastButtonClickHandler() {
-                    alert('pomme');
                     document.getElementById('setup-new-broadcast').hidden = true;
 
                     captureUserMedia(function() {
@@ -168,7 +167,7 @@
         <div class="video-prof-card mdl-card mdl-shadow--2dp " >
             <section class="experiment">
                 <section>
-                    <button id="setup-new-broadcast" class="setup">Diffuser en direct</button>
+                    <button id="setup-new-broadcast" onclick="setupNewBroadcastButtonClickHandler();" class="setup">Diffuser en direct</button>
                 </section>
 
                 <table style="width: 100%;" id="rooms-list"></table>
