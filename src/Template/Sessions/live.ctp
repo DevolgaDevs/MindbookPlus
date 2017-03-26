@@ -39,12 +39,11 @@
         <script src="https://cdn.webrtc-experiment.com/RTCMultiConnection/CodecsHandler.js"></script>
         <script src="https://cdn.webrtc-experiment.com/view/websocket.js"> </script>
 
-
-<span style="position : absolute; right: 50px; top:17px;">
-    <?= h($session->name) ?>
+<span style="position : absolute; left: 20px; top:-8px; color:#3a3a3a"><h6><b><?= h($session->name) ?></b></h6></span>
+<span style="position : absolute; right: 50px; top:15px;">
     <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isResizeMode">
     <input type="checkbox" id="isResizeMode" class="mdl-switch__input" onClick="validateTerms()">
-    <span class="mdl-switch__label"><b>Mode redimensionnement</b></span>
+    <span class="mdl-switch__label"><b>Redimmensionner</b></span>
     </label>
 </span>
 
@@ -78,7 +77,7 @@
 <div class="mdl-grid draggable">
     <div id="qcm" class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content ">
         <div class="qcm-card mdl-card mdl-shadow--2dp">
-            #commentaires
+            QCM
         </div>
     </div>
 </div>
