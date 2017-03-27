@@ -24,13 +24,3 @@
                         </div>
                     </div>
                 </div>
-
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Question Choice'), ['action' => 'edit', $questionChoice->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Question Choice'), ['action' => 'delete', $questionChoice->id], ['confirm' => __('Are you sure you want to delete # {0}?', $questionChoice->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Question Choices'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Question Choice'), ['action' => 'add']) ?> </li>
-    </ul>
-</nav>

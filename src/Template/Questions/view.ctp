@@ -18,20 +18,10 @@
                             <div style="align : center; margin-left:30px;"><a href="/questions/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #3d91ff; color : #ffffff;">
                                     < Retour à la liste
                                 </a> <a href="/questions/edit/<?= $this->Number->format($question->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
-                                    Editer cette session
+                                    Editer cette question
                                 </a>
                                 <?= $this->Html->link('Voir les réponses associées',['controller' => 'questionAnswers','action' => 'question', $question->id], ['class' => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect', 'style' => 'background-color: #00c96f; color : #ffffff;']) ?>
                                  </div>
                         </div>
                     </div>
                 </div>
-
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Question'), ['action' => 'edit', $question->QUESTION_ID]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Question'), ['action' => 'delete', $question->QUESTION_ID], ['confirm' => __('Are you sure you want to delete # {0}?', $question->QUESTION_ID)]) ?> </li>
-        <li><?= $this->Html->link(__('List Questions'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Question'), ['action' => 'add']) ?> </li>
-    </ul>
-</nav>
