@@ -29,8 +29,6 @@
                                         <td class="mdl-data-table__cell--non-numeric"><?= h($question->sessionId) ?></td> 
                                         <td class="actions" style="text-align:right;">
                                             <?= $this->Html->link(__('View'), ['action' => 'view', $question->id]) ?>
-                                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $question->id]) ?>
-                                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $question->id], ['confirm' => __('Are you sure you want to delete # {0}?', $question->id)]) ?>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>
