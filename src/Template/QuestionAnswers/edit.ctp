@@ -14,10 +14,10 @@
                 <?php
                     echo $this->Form->control('id', array('class' => 'mdl-textfield__input'));
                     echo '<br />';
-                    echo $this->Form->control('questionId', array('type'=>'select','options'=>$questions, 'class' => 'mdl-selectfield__select'));
+                    echo $this->Form->control('questionId', array('label'=>'Question','type'=>'select','options'=>$questions, 'class' => 'mdl-selectfield__select'));
                     echo '<br />';
                     echo '<br />';
-                    echo $this->Form->control('answerId', array('type'=>'select','options'=>$answers, 'class' => 'mdl-selectfield__select'));
+                    echo $this->Form->control('answerId', array('label'=>'Réponse','type'=>'select','options'=>$answers, 'class' => 'mdl-selectfield__select'));
                     echo '<br />';
                     echo '<br />';
                     echo '<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isRightAnswer">';

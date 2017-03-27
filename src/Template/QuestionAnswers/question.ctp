@@ -38,6 +38,7 @@
       </div>
   </div>
   <div class="mdl-grid">
+    <?php if ($this->request->session()->read('Auth.User.isAdmin') || $this->request->session()->read('Auth.User.isTeacher') ) : ?>
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
                         <div class="mdl-card session-list-card mdl-shadow--2dp" style="height : 35px; margin-top:-20px;">
                             <a href="/question-answers/add/<?= h($questionId) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
@@ -51,5 +52,6 @@
                                     <span style="margin-top:20px">< Retour à la liste des questions</span>
                                 </a>
                         </div>
+                        <?php endif; ?>
                     </div>
                 </div>

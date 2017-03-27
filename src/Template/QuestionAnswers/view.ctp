@@ -15,13 +15,15 @@
                             <h6 style="margin-left:30px; margin-top:-20px;"><b>ID Réponse : </b><?= $this->Number->format($questionAnswer->answerId); ?></h6><br />
                             <h6 style="margin-left:30px; margin-top:-20px;"><b>Est la bonne réponse : </b><?= $questionAnswer->isRightAnswer ? __('Yes') : __('No'); ?></h6><br />
                             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                            <div style="align : center; margin-left:30px;"><a href="/questions/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #3d91ff; color : #ffffff;">
+                            <div style="align : center; margin-left:30px;"><a href="/question-answers/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #3d91ff; color : #ffffff;">
                                     < Retour à la liste
-                                </a> <a href="/questions/edit/<?= $this->Number->format($question->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
+                                </a> 
+                                <?php if ($this->request->session()->read('Auth.User.isAdmin') || $this->request->session()->read('Auth.User.isTeacher') ) : ?>
+                                <a href="/question-answers/edit/<?= $this->Number->format($questionAnswer->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
                                     Editer cette question
                                 </a>
-                                <?= $this->Html->link('Voir les réponses associées',['controller' => 'questionAnswers','action' => 'question', $question->id], ['class' => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect', 'style' => 'background-color: #00c96f; color : #ffffff;']) ?>
-                                 </div>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
