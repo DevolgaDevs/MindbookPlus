@@ -3,44 +3,33 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Classee'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="classees index large-9 medium-8 columns content">
-    <h3><?= __('Classees') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($classees as $classee): ?>
-            <tr>
-                <td><?= $this->Number->format($classee->id) ?></td>
-                <td><?= h($classee->name) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $classee->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $classee->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $classee->id], ['confirm' => __('Are you sure you want to delete # {0}?', $classee->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
-    </div>
-</div>
+<div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
+          <div class="mdl-card session-list-card mdl-shadow--2dp" style="overflow-y : auto; height : 550px;">
+              <div class="mdl-card__actions mdl-card--border">
+                  <h4 class="profil-list-titre">Liste des réponses possibles pour la question n</h4>
+              </div>
+              <table class="mdl-data-table mdl-js-data-table extended-table">
+                  <thead>
+                      <tr>
+                          <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('id') ?></th>
+                          <th class="mdl-data-table__cell--non-numeric"><?= $this->Paginator->sort('name') ?></th>
+                          <th class="mdl-data-table__cell--non-numeric actions" style="text-align:right;"><?= __('Actions') ?></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <?php foreach ($classees as $classee): ?>
+                      <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><?= $this->Number->format($classee->id) ?></td>
+                            <td class="mdl-data-table__cell--non-numeric"><?= h($classee->name) ?></td>
+                            <td class="mdl-data-table__cell--non-numeric actions" style="text-align:right;">
+                              <?= $this->Html->link('En savoir plus',['action' => 'view', $classee->id], ['class' => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect', 'style' => 'color : #5C6BC0; margin-right: -16px;']) ?>
+                          </td>
+                      </tr>
+                      <?php endforeach; ?>
+                  </tbody>
+              </table>
+              
+          </div>
+      </div>
+  </div>

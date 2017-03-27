@@ -7,12 +7,12 @@
     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
         <div class="mdl-card session-list-card mdl-shadow--2dp" style="overflow-y : auto; height : 650px;">
             <div class="mdl-card__actions mdl-card--border">
-                <h4 class="profil-list-titre">Ajouter une question à un QCM</h4>
+                <h4 class="profil-list-titre">Ajouter une choix à un QCM</h4>
             </div>
             <?= $this->Form->create($questionChoice) ?>
             <fieldset style="padding :30px;">
                 <?php
-                    echo $this->Form->control('id');
+                    echo $this->Form->control('id', array('class' => 'mdl-textfield__input'));
                     echo '<br />';
                     echo $this->Form->control('questionId', array('type'=>'select','options'=>$questions, 'class' => 'mdl-selectfield__select'));
                     echo '<br />';

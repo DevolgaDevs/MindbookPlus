@@ -13,7 +13,7 @@
             <?= $this->Form->create($questionChoice) ?>
             <fieldset style="padding :30px;">
                 <?php
-                    echo $this->Form->control('id');
+                    echo $this->Form->control('id', array('class' => 'mdl-textfield__input'));
                     echo '<br />';
                     echo $this->Form->control('questionId', array('type'=>'select','options'=>$questions, 'class' => 'mdl-selectfield__select'));
                     echo '<br />';

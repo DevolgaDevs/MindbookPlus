@@ -3,25 +3,23 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Answer'), ['action' => 'edit', $answer->ANSWER_ID]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Answer'), ['action' => 'delete', $answer->ANSWER_ID], ['confirm' => __('Are you sure you want to delete # {0}?', $answer->ANSWER_ID)]) ?> </li>
-        <li><?= $this->Html->link(__('List Answers'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Answer'), ['action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="answers view large-9 medium-8 columns content">
-    <h3><?= h($answer->ANSWER_ID) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($answer->id) ?></td>
-        </tr>
-    </table>
-    <div class="row">
-        <h4><?= __('Text') ?></h4>
-        <?= $this->Text->autoParagraph(h($answer->text)); ?>
-    </div>
-</div>
+<div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
+                        <div class="mdl-card session-list-card " style="overflow-y : auto; height : 650px;">
+                            <div class="mdl-card__actions mdl-card--border">
+                                <h4 class="profil-list-titre">Réponse possible pour la question</h4>
+                            </div>
+                            <hr>
+                            <h6 style="margin-left:30px;"><b>ID Réponse : </b><?= $this->Number->format($answer->id) ?></h6>
+                            <h6 style="margin-left:30px; margin-top:0px;"><b>ID Question : </b><?= h($answer->text) ?></h6><br />
+                            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                            <div style="align : center; margin-left:30px;"><a href="/questions/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #3d91ff; color : #ffffff;">
+                                    < Retour à la liste
+                                </a> <a href="/questions/edit/<?= $this->Number->format($answer->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
+                                    Editer cette réponse
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
