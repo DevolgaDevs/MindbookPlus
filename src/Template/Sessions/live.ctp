@@ -27,15 +27,15 @@
     var videoright_width = $(".videogauche").css("width");
     var videoright_height = $(".videogauche").css("height");
 
-    var qcm_left = $("#qcm").css("left");
-    var qcm_top = $("#qcm").css("top");
-    var qcm_width = $("#qcm").css("width");
-    var qcm_height = $("#qcm").css("height");
+    var qcm_left = $("#qcmviewleft").css("left");
+    var qcm_top = $("#qcmviewleft").css("top");
+    var qcm_width = $("#qcmviewwidth").css("width");
+    var qcm_height = $("#qcmviewwidth").css("height");
 
-    var comment_left = $("#qcm").css("left");
-    var comment_top = $("#qcm").css("top");
-    var comment_width = $("#qcm").css("width");
-    var comment_height = $("#qcm").css("height");
+    var comment_left = $("#commentviewleft").css("left");
+    var comment_top = $("#commentviewleft").css("top");
+    var comment_width = $("#commentviewwidth").css("width");
+    var comment_height = $("#commentviewwidth").css("height");
 
     function showwebcam(){
         if(isWebcamShowed == true)
@@ -146,13 +146,10 @@
         var e=document.getElementById('videoright');
         var h=document.getElementById('videogauche');
         var i=document.getElementById('videodroite');
-        var f=document.getElementById('qcm');
-        var g=document.getElementById('comment');
-
-        console.log($("#videoleft").css("left"));
-        console.log($("#videoleft").css("top"));
-        console.log($("#videogauche").css("width"));
-        console.log($("#videogauche").css("height"));
+        var fa=document.getElementById('qcmviewleft');
+        var fb=document.getElementById('qcmviewwidth');
+        var ga=document.getElementById('commentviewleft');
+        var gb=document.getElementById('commentviewwidth');
 
         d.style.left = videoleft_left;
         d.style.top = videoleft_top;
@@ -164,15 +161,15 @@
         i.style.width = videoright_width;
         i.style.height = videoright_height;
 
-        f.style.left = qcm_left;
-        f.style.top = qcm_top;
-        f.style.width = qcm_width;
-        f.style.height = qcm_height;
+        fa.style.left = qcm_left;
+        fa.style.top = qcm_top;
+        fb.style.width = qcm_width;
+        fb.style.height = qcm_height;
 
-        g.style.left = comment_left;
-        g.style.top = comment_top;
-        g.style.width = comment_width;
-        g.style.height = comment_height;
+        ga.style.left = comment_left;
+        ga.style.top = comment_top;
+        gb.style.width = comment_width;
+        gb.style.height = comment_height;
 
     }   
 
@@ -230,16 +227,16 @@
             </div>
         </div>
     </div>
-<div class="mdl-grid draggable">
+<div id="qcmviewleft"class="mdl-grid draggable">
     <div id="qcm" class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content ">
-        <div class="qcm-card mdl-card mdl-shadow--2dp">
+        <div id="qcmviewwidth" class="qcm-card mdl-card mdl-shadow--2dp">
             QCM
         </div>
     </div>
 </div>
-<div class="mdl-grid draggable">
+<div id="commentviewleft" class="mdl-grid draggable">
     <div id="comment" class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content ">
-        <div class="comment-card mdl-card mdl-shadow--2dp">
+        <div id="commentviewwidth" class="comment-card mdl-card mdl-shadow--2dp">
             #commentaires
         </div>
         <div class="write-card mdl-card mdl-shadow--2dp">
@@ -705,8 +702,8 @@ window.addEventListener('online', function() {
     videoright_width = $("#videodroite").css("width");
     videoright_height = $("#videodroite").css("height");
 
-    qcm_left = $("#qcm").css("left");
-    qcm_top = $("#qcm").css("top");
+    qcm_left = $("#qcmviewleft").css("left");
+    qcm_top = $("#qcmviewleft").css("top");
     qcm_width = $("#qcm").css("width");
     qcm_height = $("#qcm").css("height");
 
