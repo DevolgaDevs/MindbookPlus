@@ -20,7 +20,7 @@
                                 <p class="abouttext">Material Design Lite by Google<br/>
                                     <a href="https://www.apache.org/licenses/LICENSE-2.0">https://www.apache.org/licenses/LICENSE-2.0</a></p><br/>
 
-                                <p class="abouttext">&copy; 2017 Mindbook. Tous droits réservés.<br /> Mindbook est un projet sous pavillon universitaire.</p>
+                                <p class="abouttext">&copy; 2017 Mindbook. Tous droits réservés.<br /> Mindbook est un projet développé pour l'Université d'Evry - Val d'Essonne.</p>
                         </div>
                     </div>
                 </div>
