@@ -15,7 +15,6 @@
         <legend><?= __('Add Question Answer') ?></legend>
         <?php
             echo $this->Form->control('id');
-            echo $this->Form->control('questionId', array('type'=>'select','options'=>$questions, 'class' => 'mdl-selectfield__select'));
             echo $this->Form->control('answerId', array('type'=>'select','options'=>$answers, 'class' => 'mdl-selectfield__select'));
             echo $this->Form->control('isRightAnswer');
         ?>

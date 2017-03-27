@@ -40,13 +40,13 @@
   <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
                         <div class="mdl-card session-list-card mdl-shadow--2dp" style="height : 35px; margin-top:-20px;">
-                            <a href="/questions/add" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
+                            <a href="/question-answers/add/<?= h($questionId) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
                             style="background-color: #00c96f; color : #ffffff;  height:50px; ">
                                     <span style="margin-top:20px">Ajouter une réponse</span>
                                 </a>
                         </div>
                         <div class="mdl-card session-list-card mdl-shadow--2dp" style="height : 35px; margin-top:5px;">
-                                <a href="/question/session" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
+                                <a href="/questions/session/<?= h($questionId) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
                             style="background-color: #5C6BC0; color : #ffffff;  height:50px; margin-top:0px;">
                                     <span style="margin-top:20px">< Retour à la liste des questions</span>
                                 </a>

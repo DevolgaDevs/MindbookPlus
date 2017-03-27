@@ -64,11 +64,12 @@ class QuestionAnswersController extends AppController
      *
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($questionId = null)
     {
         $questionAnswer = $this->QuestionAnswers->newEntity();
         if ($this->request->is('post')) {
             $questionAnswer = $this->QuestionAnswers->patchEntity($questionAnswer, $this->request->getData());
+            $questionAnswer['questionId'] = $questionId;
             if ($this->QuestionAnswers->save($questionAnswer)) {
                 $this->Flash->success(__('The question answer has been saved.'));
 
