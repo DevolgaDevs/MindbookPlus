@@ -14,8 +14,6 @@
                 <?php
                     echo $this->Form->control('id', array('class' => 'mdl-textfield__input'));
                     echo '<br />';
-                    echo $this->Form->control('questionId', array('label'=>'Question','type'=>'select','options'=>$questions, 'class' => 'mdl-selectfield__select'));
-                    echo '<br />';
                     echo '<br />';
                     echo $this->Form->control('answerId', array('label'=>'Réponse','type'=>'select','options'=>$answers, 'class' => 'mdl-selectfield__select'));
                     echo '<br />';
