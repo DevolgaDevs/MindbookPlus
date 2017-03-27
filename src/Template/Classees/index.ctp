@@ -44,8 +44,5 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-                
-=======
     <?php endif; ?>
->>>>>>> origin/master
+
