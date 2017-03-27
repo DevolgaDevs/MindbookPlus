@@ -27,7 +27,7 @@
                             <td class="mdl-data-table__cell--non-numeric"><?= $this->Number->format($questionAnswer->answerId) ?></td>
                             <td class="mdl-data-table__cell--non-numeric"><?= $this->Number->format($questionAnswer->isRightAnswer) ?></td>
                             <td class="mdl-data-table__cell--non-numeric actions" style="text-align:right;">
-                              <?= $this->Html->link(__('View'), ['action' => 'view', $questionAnswer->id]) ?>
+                              <?= $this->Html->link('En savoir plus',['action' => 'view', $questionAnswer->id], ['class' => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect', 'style' => 'color : #5C6BC0; margin-right: -16px;']) ?>
                           </td>
                       </tr>
                       <?php endforeach; ?>
