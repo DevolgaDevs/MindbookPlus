@@ -63,11 +63,12 @@ class QuestionsController extends AppController
      *
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($sessionId = null)
     {
         $question = $this->Questions->newEntity();
         if ($this->request->is('post')) {
             $question = $this->Questions->patchEntity($question, $this->request->getData());
+            $question['sessionId'] = $sessionId;
             if ($this->Questions->save($question)) {
                 $this->Flash->success(__('The question has been saved.'));
 
