@@ -64,6 +64,9 @@ $cakeDescription = 'Mindbook';
                 <?php if ($this->request->session()->read('Auth.User.isAdmin')) : ?>
                     <a class="mdl-navigation__link" href="/users"><i class="material-icons">fingerprint</i> Utilisateurs</a>
                 <?php endif; ?>
+                <?php if ($this->request->session()->read('Auth.User.isAdmin')) : ?>
+                    <a class="mdl-navigation__link" href="/classees"><i class="material-icons">folder_shared</i> Classes</a>
+                <?php endif; ?>
                 <a class="mdl-navigation__link" href="/info"><i class="material-icons">info_outline</i> Informations</a>
             </nav>
         </div>
