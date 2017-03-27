@@ -173,6 +173,36 @@
 
     }   
 
+    function getNameAnswers(id, array)
+    {
+        console.log(id);
+        
+        for(i = 0; i < array.length; i++){
+            if (array[i]['id'] == id)
+            {
+                return array[i]['text'];
+            }
+        } 
+    }
+
+    function precedent(){
+        
+        console.log("shit");
+
+    } 
+
+    function valider(){
+        
+        //valide la q en cours
+
+    }   
+
+    function suivant(){
+        
+        //va à la q suivante
+
+    }     
+
     </script>
 
 
@@ -187,12 +217,12 @@
 <span style="position : absolute; left: 20px; top:-8px; color:#3a3a3a"><h6><b><?= h($session->name) ?></b></h6></span>
 
 <span style="position : absolute; right: 20px; top:3px;">
-    <div id="viewWebcam" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="showwebcam();" ><i class="material-icons">switch_video</i></div>
-    <div id="viewScreenSharing" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar" onclick="showsharing();"><i class="material-icons">screen_share</i></div>
-    <div id="viewQcm" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="showqcm();"><i class="material-icons">format_list_bulleted</i></div>
-    <div id="viewComment" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="showcomment();"><i class="material-icons">message</i></div>
-    <div id="mode" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="modewindow();"><i class="material-icons">border_outer</i></div>
-    <div id="reinit" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="reinit();"><i class="material-icons">refresh</i></div>
+    <div id="viewWebcam" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="showwebcam();" style="border-radius:25%;"><i class="material-icons">switch_video</i></div>
+    <div id="viewScreenSharing" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar" onclick="showsharing();"style="border-radius:25%;"><i class="material-icons">screen_share</i></div>
+    <div id="viewQcm" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="showqcm();"style="border-radius:25%;"><i class="material-icons">format_list_bulleted</i></div>
+    <div id="viewComment" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="showcomment();"style="border-radius:25%;"><i class="material-icons">message</i></div>
+    <div id="mode" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="modewindow();"style="border-radius:25%;"><i class="material-icons">border_outer</i></div>
+    <div id="reinit" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="reinit();"style="border-radius:25%;"><i class="material-icons">refresh</i></div>
 </span>
 
 <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
@@ -229,8 +259,48 @@
     </div>
 <div id="qcmviewleft"class="mdl-grid draggable">
     <div id="qcm" class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content ">
-        <div id="qcmviewwidth" class="qcm-card mdl-card mdl-shadow--2dp">
-            QCM
+        <div id="qcmviewwidth" class="qcm-card mdl-card mdl-shadow--2dp" style="overflow-x:hidden; overflow-y:auto">
+            <span style="margin-top :10px;right:92px; position:absolute; ">
+                <div id="precedent" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="precedent();" style="background-color:#2196F3;line-height:3em;border-radius:25%;width:50% !important;height:50% !important"><<</div>
+            </span>
+            <span style="margin-top :9px;right:40px; position:absolute;" >
+                <div id="precedent" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="valider();" style="background-color:#2196F3;line-height:3em;border-radius:25%;"><i class="material-icons">done</i></div>
+            </span>
+            <span style="margin-top :10px;right:10px; position:absolute; " >
+                <div id="precedent" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="suivant();" style="background-color:#2196F3;line-height:3em;border-radius:25%;width:50% !important;height:50% !important">>></div>
+            </span>
+
+            <?php foreach ($questions as $question) : ?>
+
+            <span style="margin-left:25px;"><h6>Question n°<?= $this->Number->format($question->id) ?> : <?= h($question->text)?></h6></span>
+
+                <?php foreach ($questionAnswers as $questionAnswer) : ?>
+
+                    <?php if($questionAnswer['questionId'] == $question['id']) : ?>
+
+                        <?php foreach ($answers as $answer) : ?>
+
+                            <span style="margin-left:25px;">
+
+                            <?php if($questionAnswer['questionId'] == $answer['id']) : ?>
+
+                                
+                                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                                <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" onclick="precedent();" checked>
+                                <span class="mdl-checkbox__label"><?= h($answer->text)?></span>
+
+                            <?php endif; ?>
+
+                            </span>
+
+                        <?php endforeach; ?>
+
+                    <?php endif; ?>
+
+                <?php endforeach; ?>
+
+            <?php endforeach; ?>
+            
         </div>
     </div>
 </div>
@@ -254,8 +324,6 @@
 </div>
 
     <script>
-    
-
                 var config = {
                     openSocket: function(config) {
                         var channel = config.channel || location.href.replace( /\/|:|#|%|\.|\[|\]/g , '');
