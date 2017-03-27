@@ -14,7 +14,7 @@
                                 <div class="last-note-header live-color"> LIVE</div>
                             </div>
                             <div class="mdl-card__actions mdl-card--border blue-card-color">
-                                <a class="button-link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="view_session.html">
+                                <a class="button-link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/sessions/live/<?= $this->request->session()->read('Auth.User.id') ?>?s=<?= $this->request->session()->read('Auth.User.id') ?>">
                                     Rejoindre la session
                                 </a>
                                 <div class="mdl-layout-spacer "></div>
@@ -52,7 +52,7 @@
                                         <td class="mdl-data-table__cell--non-numeric"><?= h($session->date) ?></td>
                                         <td class="mdl-data-table__cell--non-numeric"><?= h($session->hasQuestions) ?></td>
                                         <td class="actions" style="text-align:right;">
-                                            <?= $this->Html->link('En savoir plus',['action' => 'view', $session->id], ['class' => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect', 'style' => 'color : #5C6BC0; margin-right: -16px;']) ?>
+                                            <?= $this->Html->link('En savoir plus', ['action' => 'view', $session->id], ['class' => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect', 'style' => 'color : #5C6BC0; margin-right: -16px;']) ?>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>

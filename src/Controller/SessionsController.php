@@ -32,9 +32,9 @@ class SessionsController extends AppController
     {
         $connection = ConnectionManager::get('default');
         $nowTime = Time::now();
-        $nowTime->addHours(1); //UTC+1
+        $nowTime->addHours(2); //UTC+2
         $nowTimeMinus3 = Time::now();
-        $nowTimeMinus3->addHours(1); //UTC+1
+        $nowTimeMinus3->addHours(2); //UTC+2
         $nowTimeMinus3->subHours(3);
         if ($this->request->session()->read('Auth.User.isTeacher')) {
             $result = $connection->execute('select * from sessions where userId = :userId  && date < :date && date > :dateMinus limit 1', ['userId' => $this->request->session()->read('Auth.User.id'), 'date' => Time::now(), 'dateMinus' => $nowTimeMinus3->i18nFormat('yyyy-MM-dd HH:mm:ss')]);
