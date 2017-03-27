@@ -14,7 +14,7 @@
                 <?php
                     echo $this->Form->control('id');
                     echo '<br />';
-                    echo $this->Form->control('name', array('class' => 'mdl-textfield__input'));
+                    echo $this->Form->control('name', array('label'=>'Nom','class' => 'mdl-textfield__input'));
                     echo '<br />';
                     echo '<br />';
                 ?>
