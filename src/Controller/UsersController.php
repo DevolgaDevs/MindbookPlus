@@ -55,7 +55,7 @@ class UsersController extends AppController
                 $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect([
-                'controller' => 'Dashboard',
+                'controller' => 'Sessions',
                 'action' => 'index'
                             ]);
             }
