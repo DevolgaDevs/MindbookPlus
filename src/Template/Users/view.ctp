@@ -20,10 +20,10 @@
                             <h6 style="margin-left:30px; margin-top:-20px;"><b>Statut Professeur : </b><?= $user->isTeacher ? __('Yes') : __('No'); ?></h6>
                             <br /><br /><br /><br /><br /><br />
                             <div style="align : center; margin-left:30px;">
+                            <?php if ($this->request->session()->read('Auth.User.isAdmin')) : ?>
                                 <a href="/users/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #3d91ff; color : #ffffff;">
                                     < Retour à la liste
-                                 </a>
-                            <?php if ($this->request->session()->read('Auth.User.isAdmin')) : ?>
+                                </a>
                                 <a href="/users/edit/<?= $this->Number->format($user->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
                                     Editer cet utilisateur
                                 </a>
