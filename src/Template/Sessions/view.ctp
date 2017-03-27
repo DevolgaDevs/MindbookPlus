@@ -19,11 +19,14 @@
                             <br /><br /><br /><br /><br /><br /><br /><br />
                             <div style="align : center; "><a href="/sessions/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #3d91ff; color : #ffffff;">
                                     < Retour à la liste
-                                </a> <a href="/sessions/edit/<?= $this->Number->format($session->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
+                                    </a>
+                            <?php if ($this->request->session()->read('Auth.User.isAdmin') || $this->request->session()->read('Auth.User.isTeacher') ) : ?>
+                                <a href="/sessions/edit/<?= $this->Number->format($session->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
                                     Editer cette session
                                 </a>
                                 <?= $this->Html->link('Voir les questions associées',['controller' => 'questions','action' => 'session', $session->id], ['class' => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect', 'style' => 'background-color: #00c96f; color : #ffffff;']) ?>
-                                </div>
+                            <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
