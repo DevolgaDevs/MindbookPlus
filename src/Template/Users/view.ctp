@@ -13,7 +13,6 @@
 
                             <h3 style="margin-left:30px;"><?= h($user->firstname) ?> <?= h($user->lastname) ?></h3>
                             <h6 style="margin-left:30px;"><b>Nom d'utilisateur : </b><?= h($user->username) ?></h6><br />
-                            <h6 style="margin-left:30px; margin-top:-20px;"><b>Mot de passe : </b><?= h($user->password) ?></h6><br />
                             <h6 style="margin-left:30px; margin-top:-20px;"><b>ID Utilisateur : </b><?= $this->Number->format($user->id) ?></h6><br />
                             <h6 style="margin-left:30px; margin-top:-20px;"><b>Promotion : </b><?= $this->Number->format($user->classId) ?></h6><br />
                             <h6 style="margin-left:30px; margin-top:-20px;"><b>Droit d'administration : </b><?= $user->isAdmin ? __('Yes') : __('No'); ?></h6><br />
