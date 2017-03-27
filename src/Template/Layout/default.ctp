@@ -46,11 +46,9 @@ $cakeDescription = 'Mindbook';
                 <div class="mdl-button-custom-top-profile mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect user-round-img-topbar " id="btn-menu-profile"></div>
                 <div class="profile-top-name"><?= $this->request->session()->read('Auth.User.username') ?></div>
                 <div class="mdl-layout-spacer"></div>
-
                 <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon" style="background-color : #353942;color:white;">
                     <i class="material-icons">more_vert</i>
                 </button>
-
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
                     <a href="/users/logout"> <li class="mdl-menu__item">Se déconnecter</li></a>
                 </ul>
@@ -60,20 +58,11 @@ $cakeDescription = 'Mindbook';
         <div id="sidebar" class="mdl-layout__drawer">
             <div class="mdl-layout-title logotext">min<span class="logotext-color">db</span>ook</div>
             <nav class="mdl-navigation">
-
-                <a class="mdl-navigation__link" style="margin-top:40px;" href="/dashboard"><i class="material-icons">dashboard</i> Dashboard</a>
-
-                    <?= $this->Html->link($this->Html->tag('i','account_box',array('class'=>'material-icons')). ' Profil', ['controller' => 'users','action' => 'view', $this->request->session()->read('Auth.User.id')], ['escape' => false,'class' => 'mdl-navigation__link']) ?>
-
-                    <a class="mdl-navigation__link" href="/sessions"><i class="material-icons">visibility</i> Sessions</a>
-
+                <?= $this->Html->link($this->Html->tag('i','account_box',array('class'=>'material-icons')). ' Profil', ['controller' => 'users','action' => 'view', $this->request->session()->read('Auth.User.id')], ['escape' => false,'class' => 'mdl-navigation__link']) ?>
+                <a class="mdl-navigation__link" href="/sessions"><i class="material-icons">visibility</i> Sessions</a>
                 <?php if ($this->request->session()->read('Auth.User.isAdmin')) : ?>
-
                     <a class="mdl-navigation__link" href="/users"><i class="material-icons">fingerprint</i> Utilisateurs</a>
-
                 <?php endif; ?>
-
-                <a class="mdl-navigation__link" href="/results"><i class="material-icons">assessment</i> Résultats</a>
                 <a class="mdl-navigation__link" href="/info"><i class="material-icons">info_outline</i> Informations</a>
             </nav>
         </div>
@@ -85,8 +74,6 @@ $cakeDescription = 'Mindbook';
                 </div>
             </div>
         </main>
-
     </div>
-
 </body>
 </html>
