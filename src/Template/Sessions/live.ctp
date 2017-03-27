@@ -272,6 +272,24 @@
 
             <?php foreach ($questions as $question) : ?>
 
+            <?= $this->Form->create($questionChoice) ?>
+            <fieldset style="margin-left:25px;">
+                <?php
+                    echo '<br />';
+                    echo '<input type="text" id="questionId" value="'.$question['id'].'">';
+                    echo '<br />';
+                    echo '<br />';
+                    echo $this->Form->control('answerId', array('label'=>'Réponse','type'=>'select','options'=>$answers, 'class' => 'mdl-selectfield__select'));
+                    echo '<br />';
+                    echo '<br />';
+                    echo $this->Form->control('userId', array('label'=>'Utilisateur','type'=>'select','options'=>$users, 'class' => 'mdl-selectfield__select'));
+                    echo '<br />';
+                    echo '<br />';
+                ?>
+            </fieldset>
+
+            <!-- Ne pas faire de redirection. Utiliser un compteur en JS pour next(). Detruire le bloc (en js) après validation. Et recréer le form avec la 2ème question. ex: div remove et après un div insert avec le nouveau form.-->
+
             <span style="margin-left:25px;"><h6>Question n°<?= $this->Number->format($question->id) ?> : <?= h($question->text)?></h6></span>
 
                 <?php foreach ($questionAnswers as $questionAnswer) : ?>
