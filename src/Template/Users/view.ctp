@@ -24,7 +24,9 @@
                                 <a href="/users/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #3d91ff; color : #ffffff;">
                                     < Retour à la liste
                                 </a>
-                                <?= $this->Html->link('Editer cet utilisateur',['controller' => 'sessions','action' => 'live', $user->id.'s$='.$user->id], ['class' => 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect', 'style' => 'background-color: #00c96f; color : #ffffff;']) ?>
+                                <a href="/users/edit/<?= $this->Number->format($user->id) ?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background-color: #00c96f; color : #ffffff;">
+                                    Editer cet utilisateur
+                                </a>
                             <?php endif; ?>
                             </div>
                         </div>
