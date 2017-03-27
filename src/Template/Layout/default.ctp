@@ -58,6 +58,7 @@ $cakeDescription = 'Mindbook';
         <div id="sidebar" class="mdl-layout__drawer">
             <div class="mdl-layout-title logotext">min<span class="logotext-color">db</span>ook</div>
             <nav class="mdl-navigation">
+                <span style="margin-top:40px;"</span>
                 <?= $this->Html->link($this->Html->tag('i','account_box',array('class'=>'material-icons')). ' Profil', ['controller' => 'users','action' => 'view', $this->request->session()->read('Auth.User.id')], ['escape' => false,'class' => 'mdl-navigation__link']) ?>
                 <a class="mdl-navigation__link" href="/sessions"><i class="material-icons">visibility</i> Sessions</a>
                 <?php if ($this->request->session()->read('Auth.User.isAdmin')) : ?>
