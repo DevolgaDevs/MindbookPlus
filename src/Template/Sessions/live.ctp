@@ -27,6 +27,16 @@
     var videoright_width = $(".videogauche").css("width");
     var videoright_height = $(".videogauche").css("height");
 
+    var qcm_left = $("#qcm").css("left");
+    var qcm_top = $("#qcm").css("top");
+    var qcm_width = $("#qcm").css("width");
+    var qcm_height = $("#qcm").css("height");
+
+    var comment_left = $("#qcm").css("left");
+    var comment_top = $("#qcm").css("top");
+    var comment_width = $("#qcm").css("width");
+    var comment_height = $("#qcm").css("height");
+
     function showwebcam(){
         if(isWebcamShowed == true)
         {
@@ -153,6 +163,16 @@
         e.style.top = videoright_top;
         i.style.width = videoright_width;
         i.style.height = videoright_height;
+
+        f.style.left = qcm_left;
+        f.style.top = qcm_top;
+        f.style.width = qcm_width;
+        f.style.height = qcm_height;
+
+        g.style.left = comment_left;
+        g.style.top = comment_top;
+        g.style.width = comment_width;
+        g.style.height = comment_height;
 
     }   
 
@@ -684,5 +704,15 @@ window.addEventListener('online', function() {
     videoright_top = $("#videoright").css("top");
     videoright_width = $("#videodroite").css("width");
     videoright_height = $("#videodroite").css("height");
+
+    qcm_left = $("#qcm").css("left");
+    qcm_top = $("#qcm").css("top");
+    qcm_width = $("#qcm").css("width");
+    qcm_height = $("#qcm").css("height");
+
+    comment_left = $("#comment").css("left");
+    comment_top = $("#comment").css("top");
+    comment_width = $("#comment").css("width");
+    comment_height = $("#comment").css("height");
 
     </script>
