@@ -15,7 +15,7 @@
                                 <?php
                                     echo $this->Form->control('id', array('class' => 'mdl-textfield__input'));
                                     echo '<br />';
-                                    echo $this->Form->control('text', array('class' => 'mdl-textfield__input'));
+                                    echo $this->Form->control('text', array('label'=>'Texte','class' => 'mdl-textfield__input'));
                                     echo '<br />';
                                     echo '<br />';
                                     echo '<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isOpenQuestion">';
