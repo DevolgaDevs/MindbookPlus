@@ -34,6 +34,7 @@
           </div>
       </div>
   </div>
+    <?php if ($this->request->session()->read('Auth.User.isAdmin') || $this->request->session()->read('Auth.User.isTeacher') ) : ?>
   <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
                         <div class="mdl-card session-list-card mdl-shadow--2dp" style="height : 35px; margin-top:-20px;">
@@ -44,4 +45,5 @@
                         </div>
                     </div>
                 </div>
+    <?php endif; ?>
 
