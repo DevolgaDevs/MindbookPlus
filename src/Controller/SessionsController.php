@@ -89,6 +89,7 @@ class SessionsController extends AppController
         $session = $this->Sessions->newEntity();
         if ($this->request->is('post')) {
             $session = $this->Sessions->patchEntity($session, $this->request->getData());
+            $session['userId'] = $this->request->session()->read('Auth.User.id');
             if ($this->Sessions->save($session)) {
                 $this->Flash->success(__('The session has been saved.'));
 

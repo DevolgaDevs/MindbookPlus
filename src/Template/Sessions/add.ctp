@@ -17,8 +17,6 @@
                                     echo '<br />';
                                     echo $this->Form->control('name', array('class' => 'mdl-textfield__input'));
                                     echo '<br />';
-                                    echo $this->Form->control('userId', array('class' => 'mdl-textfield__input'));
-                                    echo '<br />';
                                     echo $this->Form->control('classId', array('type'=>'select','options'=>$classees, 'class' => 'mdl-selectfield__select'));
                                     echo '<br />';
                                     echo $this->Form->control('date', ['empty' => false], array('class' => 'mdl-textfield__input'));
