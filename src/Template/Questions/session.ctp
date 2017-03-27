@@ -21,7 +21,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($questions as $question): ?>
+                                    <?php foreach ($questions as $question) : ?>
                                     <tr>
                                         <td class="mdl-data-table__cell--non-numeric"><?= $this->Number->format($question->id) ?></td>
                                         <td class="mdl-data-table__cell--non-numeric"><?= h($question->text) ?></td>
@@ -39,12 +39,13 @@
                     </div>
                 </div>
                 <div class="mdl-grid">
+                <?php if ($this->request->session()->read('Auth.User.isAdmin') || $this->request->session()->read('Auth.User.isTeacher')) : ?>
                     <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
                         <div class="mdl-card session-list-card mdl-shadow--2dp" style="height : 35px; margin-top:-20px;">
                             <a href="/questions/add" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
                             style="background-color: #00c96f; color : #ffffff;  height:50px; ">
                                     <span style="margin-top:20px">Ajouter une question</span>
-                                </a>
+                            </a>
                         </div>
                         <div class="mdl-card session-list-card mdl-shadow--2dp" style="height : 35px; margin-top:5px;">
                                 <a href="/sessions" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" 
@@ -52,6 +53,7 @@
                                     <span style="margin-top:20px">< Retour à la liste des sessions</span>
                                 </a>
                         </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
