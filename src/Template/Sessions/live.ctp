@@ -10,6 +10,9 @@
     </script>
     <script>
 
+    var totalQuestions = 0;
+    var qEnCours = 1;
+
     var isWebcamShowed = true;
     var isScreensharingShowed = true;
     var isQcmShowed = true;
@@ -198,8 +201,6 @@
     }   
 
     function suivant(){
-        
-        //va à la q suivante
 
     }     
 
@@ -270,24 +271,32 @@
                 <div id="precedent" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="suivant();" style="background-color:#2196F3;line-height:3em;border-radius:25%;width:50% !important;height:50% !important">>></div>
             </span>
 
-            <?php foreach ($questions as $question) : ?>
+             <?php foreach ($questions as $question) : ?>
 
-            <!-- Ne pas faire de redirection. Utiliser un compteur en JS pour next(). Detruire le bloc (en js) après validation. Et recréer le form avec la 2ème question. ex: div remove et après un div insert avec le nouveau form.-->
-
-            <span style="margin-left:25px;"><h6>Question n°<?= $this->Number->format($question->id) ?> : <?= h($question->text)?></h6></span>
-
-                <?php foreach ($questionAnswers as $questionAnswer) : ?>
-
-                    <?php if($questionAnswer['questionId'] == $question['id']) : ?>
-
-                        <?= $this->Number->format($questionAnswer->answerId) ?><br />
-
-                    <?php endif; ?>
-
-                <?php endforeach; ?>
-
-            <?php endforeach; ?>
             
+            <div id="reponse">
+
+                 <span style="margin-left:25px;"><h6>Question n°<?= $this->Number->format($question->id) ?> : <?= h($question->text)?></h6></span>
+             
+                     <?php foreach ($questionAnswers as $questionAnswer) : ?>
+                 
+                         <?php if($questionAnswer['questionId'] == $questions[0]['id']) : ?>
+                     
+                            <?php foreach($answers as $answer) : ?>
+                                
+                                <?php if($answer['id'] == $questionAnswer['answerId']) : ?>
+                                    
+                                    <?= h($answer['text']); ?><br />
+                                
+                                <?php endif ?>
+
+                            <?php endforeach; ?>
+
+                         <?php endif; ?>
+                     
+                     <?php endforeach; ?>
+            </div>
+            <?php endforeach ?>
         </div>
     </div>
 </div>
