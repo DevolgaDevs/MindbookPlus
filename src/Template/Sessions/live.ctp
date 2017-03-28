@@ -329,7 +329,7 @@
                     <input class="mdl-textfield__input comment-textfield" type="text" id="chatmessage">
                     <label class="mdl-textfield__label" for="chatmessage">Écrire un commentaire...</label>
                 </div>
-                <input id="envoyermessage" type="button" value="Envoyer" class="mdl-button" style="width:100%;" />
+                <input id="envoyermessage" type="button" value="Envoyer" class="mdl-button" style="width:100%; background-color :#2196F3; color:white;" />
             </form>
 
             

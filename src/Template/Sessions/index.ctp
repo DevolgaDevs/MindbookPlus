@@ -14,7 +14,7 @@
                                 <div class="last-note-header live-color"> LIVE</div>
                             </div>
                             <div class="mdl-card__actions mdl-card--border blue-card-color">
-                                <a class="button-link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/sessions/live/<?= $this->request->session()->read('Auth.User.id') ?>?s=<?= $this->request->session()->read('Auth.User.id') ?>">
+                                <a class="button-link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/sessions/live/<?php $nextSession['id'] ?>?s=<?= $this->request->session()->read('Auth.User.id') ?>">
                                     Rejoindre la session
                                 </a>
                                 <div class="mdl-layout-spacer "></div>
