@@ -188,22 +188,6 @@
         } 
     }
 
-    function precedent(){
-        
-        console.log("shit");
-
-    } 
-
-    function valider(){
-        
-        //valide la q en cours
-
-    }   
-
-    function suivant(){
-
-    }     
-
     </script>
 
 
@@ -271,50 +255,84 @@
                 <div id="precedent" class=" mdl-js-button mdl-button--fab-custom-top-profile mdl-js-ripple-effect tools-round-img-topbar " onclick="suivant();" style="background-color:#2196F3;line-height:3em;border-radius:25%;width:50% !important;height:50% !important">>></div>
             </span>
 
-             <?php foreach ($questions as $question) : ?>
-
+            <?php $checkbox=0; ?>
             
-            <div id="reponse">
+            
+
+             <?php foreach ($questions as $question) : ?>
 
                  <span style="margin-left:25px;"><h6>Question n°<?= $this->Number->format($question->id) ?> : <?= h($question->text)?></h6></span>
              
                      <?php foreach ($questionAnswers as $questionAnswer) : ?>
                  
-                         <?php if($questionAnswer['questionId'] == $questions[0]['id']) : ?>
+                         <?php if($questionAnswer['questionId'] == $question['id']) : ?>
                      
                             <?php foreach($answers as $answer) : ?>
+
+                                <span style="margin-left:25px;">
+                                <?php $checkbox = $checkbox + 1; ?>
                                 
                                 <?php if($answer['id'] == $questionAnswer['answerId']) : ?>
                                     
-                                    <?= h($answer['text']); ?><br />
+                                    <?php echo '<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox'.$checkbox.'">'; ?>
+                                    <?php echo '<input type="checkbox" id="checkbox-'.$checkbox.'" class="mdl-checkbox__input">' ?>
+                                    <?php echo '<span class="mdl-checkbox__label">'.h($answer->text).'</span>'; ?>
                                 
                                 <?php endif ?>
+
+                                </span>
 
                             <?php endforeach; ?>
 
                          <?php endif; ?>
                      
                      <?php endforeach; ?>
-            </div>
+
             <?php endforeach ?>
+
+            </span>
         </div>
     </div>
 </div>
 <div id="commentviewleft" class="mdl-grid draggable">
     <div id="comment" class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone ui-widget-content ">
         <div id="commentviewwidth" class="comment-card mdl-card mdl-shadow--2dp">
-            #commentaires
+
+        <div class="listchat" style="width:100%; ">
+            <?php
+            // Connexion à la base de données
+            try
+            {
+                $bdd = new PDO('mysql:host=malv.fr;dbname=mindbook;charset=utf8', 'mindbook', 'iG61HKJ7NzpDHBMY');
+            }
+            catch(Exception $e)
+            {
+                    die('Erreur : '.$e->getMessage());
+            }
+
+            // Récupération des 10 derniers messages
+            $reponse = $bdd->query('SELECT userid, message FROM chat ORDER BY id DESC');
+
+            // Affichage de chaque message (toutes les données sont protégées par htmlspecialchars)
+            while ($donnees = $reponse->fetch())
+            {
+                echo '<p><strong>' . htmlspecialchars($donnees[0]) . '</strong> : ' . htmlspecialchars($donnees['message']) . '</p>';
+            }
+
+            $reponse->closeCursor();
+
+            ?>
         </div>
-        <div class="write-card mdl-card mdl-shadow--2dp">
-            <form action="#">
+            <form action="chat_post.php" method="post">
+                <input type="hidden" name="id" id="userId" value="<?= $this->request->session()->read('Auth.User.id') ?>"/><br />
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input comment-textfield" type="text" id="sample3">
-                    <label class="mdl-textfield__label" for="sample3">Écrire un commentaire...</label>
+                    <input class="mdl-textfield__input comment-textfield" type="text" id="chatmessage">
+                    <label class="mdl-textfield__label" for="chatmessage">Écrire un commentaire...</label>
                 </div>
+                <input id="envoyermessage" type="button" value="Envoyer" class="mdl-button" style="width:100%;" />
             </form>
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect comment-btn-send">
-                    Envoyer
-            </a>
+
+            
         </div>
     </div>
 </div>
